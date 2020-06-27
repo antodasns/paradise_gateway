@@ -1,0 +1,94 @@
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+<section class="section wide-fat">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <table>
+                        <h1>View Package</h1>
+                        
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Total Distance</th>
+  <th>View Main Tourist destinations on the way</th>
+    
+  </tr>
+  {% for x in details%}
+  <tr>
+    <td>Trivandrum</td>
+    <td> {{x.package_name}}</td>
+     <td>{{x.kilometers}}</td>
+   
+     <td> <a href="{% url 'administration:select_places' x.id %}">View</a></td>
+  </tr>
+   {% endfor %}
+
+                    
+</table>
+
+                         
+                       
+
+
+            </section>
+
+</div>
+
+
+{%endblock%}   
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+

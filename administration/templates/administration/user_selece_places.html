@@ -1,0 +1,94 @@
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+<section class="section wide-fat">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <table>
+                        <h1>View Packages</h1>
+                        
+  <tr>
+    <th>Package Name</th>
+    <th><label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label></th>
+ 
+    
+  </tr>
+  {% for x in details%}
+  <tr>
+    <td>{{x.package_name}}</td>
+    <td> </td>
+  </tr>
+   {% endfor %}
+
+                    
+</table>
+
+
+
+                         
+                       
+
+
+            </section>
+</div>
+
+
+{%endblock%}   
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+

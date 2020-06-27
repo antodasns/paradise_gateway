@@ -1,0 +1,103 @@
+{%extends 'administration/layout_view.html'%}
+{% load static %}
+ 
+{%block content%}
+
+            </header>
+
+<section id="travel-info" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <table>
+                        <h1>View Medical Store</h1>
+                        
+  <tr>
+    <th>Name</th>
+    <th>Pincode</th>
+    <th>Location</th>
+    <th></th>
+    <th></th>
+    
+  </tr>
+   {% for x in details%}
+  <tr>
+    <td>{{x.name}}</td>
+    <td>{{x.pincode}}</td>
+    <td>{{x.location}}</td>
+    <td><a href="{% url 'administration:edit_medical' x.id %}">Edit</td>
+    <td><a href="{% url 'administration:delete_medical' x.id %}">Delete</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+
+
+</div>
+</body>
+</html>
+                         
+                       
+
+
+            </section>
+
+
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+
+
+
+
+
+
+
+
+{%endblock%}   

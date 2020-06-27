@@ -1,0 +1,98 @@
+{%extends 'administration/layout_add.html'%}
+{% load static %}
+ 
+{%block content%}
+
+            </header>
+
+<section id="travel-info" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container"> 
+
+
+
+
+
+                    <div class="col-xs-12 col-sm-12">
+
+                        <div class="form-holder">
+
+                            <form class="info-form"  method="post" action="{% url 'administration:add_hotels'%}">
+                                 {% csrf_token %}
+                                <div class="row field-row">
+
+                                    <div class="col-xs-16 col-sm-12">
+                                        <h1>Add a Hotel</h1>
+
+
+                                        <input class="required " placeholder="Hotel Name" name="hotelname">
+
+                                    </div>
+                                </div>
+
+
+
+                                    
+
+                                <div class="row field-row">
+
+                                  
+
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input class="required" placeholder="Location" name="hotellocation">
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input class="required" pattern="\d*" placeholder="Pincode" name="hotelpincode" maxlength="6">
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+
+
+                                        <input class="required" placeholder="Rooms Available" name="roomsavailable">
+
+
+
+                                    </div>
+                                    
+                                </div>
+
+
+
+                               
+
+                                
+
+                                <button type="submit" class="button green narrow">Submit</button>
+
+                            </form>
+
+                        </div>   
+                       
+
+
+            </section>
+
+
+
+
+
+{%endblock%}    
+                   
+
+
+

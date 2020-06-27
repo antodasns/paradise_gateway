@@ -1,0 +1,181 @@
+{%extends 'administration/layout_add.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+            </header>
+
+<section id="travel-info" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <div class="col-xs-12 col-sm-12">
+
+                        <div class="form-holder">
+
+                            <form class="info-form" method="post" action="{% url 'administration:add_package'%}">
+                                {% csrf_token %}
+                                <div class="row field-row">
+
+                                    <div class="col-xs-16 col-sm-12">
+                                        <h1>Add a package</h1>
+
+
+                                        <input type="text" class="required " placeholder="Package Name" name="packagename">
+                                         <input type="text" class="required " placeholder="kilometers" name="total_km">
+
+                                    </div>
+                                </div>
+
+
+
+                                    
+                                <div  id="appen_place">
+                                <div class="row field-row" id="">
+
+                                    <div class="col-xs-12 col-sm-3">
+
+                                        <input type="text" class="required " placeholder="Place" name="place0">
+
+                                    </div>
+
+
+
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="text" class="required" placeholder="Location" name="location0">
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="text" pattern="\d*" class="required" placeholder="Pincode" name="pincode0" maxlength="6">
+
+
+
+                                    </div>
+                                      <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="text" pattern="\d*" class="required" placeholder="kilometers_from_location" name="km0" maxlength="6">
+
+                                        
+
+
+
+                                    </div>
+                                   <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="text" pattern="\d*" class="required" placeholder="kilometers_more" name="kmm0" maxlength="6">
+                                        
+                                          <input type="hidden" name="count" value="0">
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="button" class="button green narrow" id="add_row" value="Add">
+
+
+
+                                    </div>
+                                    
+
+                                </div>
+                                </div>
+
+
+                                <div class="row field-row">
+
+
+
+
+                                    
+
+
+                                </div>
+
+
+
+                               
+
+                                
+
+                                <button type="submit" class="button green narrow">Submit</button>
+
+                            </form>
+
+                        </div>   
+                       
+
+
+            </section>
+
+
+
+
+
+{%endblock%}    
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+
+
+
+

@@ -1,0 +1,112 @@
+{%extends 'administration/layout_view.html'%}
+{% load static %}
+ 
+{%block content%}
+
+            </header>
+
+           
+
+
+
+
+
+       <!--       <section class="page-head-holder">
+
+                <div class="container">
+
+                    <div class="col-xs-6">
+
+
+
+                        <h2>View Package</h2>
+                     
+
+                    </div>
+                  </div>
+                </section> -->
+
+<section class="section wide-fat">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <table>
+                        <h1>View Packages</h1>
+                        
+  <tr>
+    <th>Package Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    
+  </tr>
+  {% for x in details%}
+  <tr>
+    <td>{{x.package_name}}</td>
+    <td> <a href="{% url 'administration:individual_view_package' x.id %}">View</a></td>
+    <td><a href="{% url 'administration:delete_package' x.id %}">Delete</a></td>
+  </tr>
+   {% endfor %}
+
+                    
+</table>
+
+
+                         
+                       
+
+
+            </section>
+
+
+
+{%endblock%}   
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+

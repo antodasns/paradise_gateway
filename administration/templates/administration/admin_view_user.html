@@ -1,0 +1,104 @@
+{%extends 'administration/layout_view.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+
+            </header>
+
+<section id="travel-info" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <table>
+                        <h1>View users</h1>
+
+  <tr>
+    <th>user_name</th>
+  
+    <th>email</th>
+    <th></th>
+    
+  </tr>
+   {% for x in details%}
+  <tr>
+    <td>{{x.username}}</td>
+    
+    <td>{{x.email}}</td>
+  
+    <td><a href="{% url 'administration:delete_user' x.id %}">Delete</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+
+
+</div>
+</body>
+</html>
+                         
+                       
+
+
+            </section>
+
+
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+
+
+
+
+
+
+
+{%endblock%}   

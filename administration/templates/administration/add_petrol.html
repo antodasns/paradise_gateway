@@ -1,0 +1,105 @@
+
+{%extends 'administration/layout_add.html'%}
+{% load static %}
+ 
+{%block content%}
+            </header>
+
+<section id="travel-info" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container"> 
+
+
+
+
+
+                   <div class="col-xs-12 col-sm-12">
+
+                        <div class="form-holder">
+
+                            <form class="info-form" method="post" action="{% url 'administration:add_petrol'%}">
+                                {% csrf_token %}
+                                <div class="row field-row">
+
+                                    <div class="col-xs-16 col-sm-12">
+                                        <h1>Add a Petrolpump</h1>
+
+
+                                       
+
+                                    </div>
+                                </div>
+                               
+
+
+                                    
+
+                                <div class="row field-row">
+
+                                    <div class="col-xs-16 col-sm-4">
+
+                                        <input class="required " placeholder="Name" name="petrolname">
+
+                                    </div>
+
+
+
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input class="required" placeholder="Location" name="petrollocation" >
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input class="required" placeholder="Pincode" name="petrolpin" maxlength="6">
+
+
+
+                                    </div>
+                                    
+
+
+                                </div>
+
+
+
+                               
+
+                                
+
+                                <button type="submit" class="button green narrow">Submit</button>
+
+                            </form>
+
+                        </div>   
+                       
+
+
+            </section>
+
+
+
+
+                   
+
+
+{%endblock%}    
+
+
+
+
+
+
+
+
+       

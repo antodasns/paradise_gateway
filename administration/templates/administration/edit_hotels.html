@@ -1,0 +1,98 @@
+{%extends 'administration/layout_add.html'%}
+{% load static %}
+ 
+{%block content%}
+
+            </header>
+
+<section id="travel-info" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container"> 
+
+
+
+
+
+                    <div class="col-xs-12 col-sm-12">
+
+                        <div class="form-holder">
+
+                            <form class="info-form"  method="post" action="{% url 'administration:update_hotel' details.id %}">
+                                 {% csrf_token %}
+                                <div class="row field-row">
+
+                                    <div class="col-xs-16 col-sm-12">
+                                        <h1>Add a Hotel</h1>
+
+
+                                        <input class="required " placeholder="Hotel Name" name="hotelname" value="{{details.name}}">
+
+                                    </div>
+                                </div>
+
+
+
+                                    
+
+                                <div class="row field-row">
+
+                                  
+
+                                    <div class="col-xs-12 col-sm-4">
+
+                                        <label>Location</label>
+
+                                        <input class="required" placeholder="Location" name="hotellocation" value="{{details.location}}">
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+
+                                        <label>Pincode</label>
+
+                                        <input class="required" placeholder="Pincode" name="hotelpincode" value="{{details.pincode}}">
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <label>Rooms available</label>
+
+                                        <input class="required" placeholder="Rooms Available" name="roomsavailable" value="{{details.roomsavailable}}">
+
+
+
+                                    </div>
+                                    
+                                </div>
+
+
+
+                               
+
+                                
+
+                                <button type="submit" class="button green narrow">Submit</button>
+
+                            </form>
+
+                        </div>   
+                       
+
+
+            </section>
+
+
+
+
+
+{%endblock%}    
+                   
+
+
+

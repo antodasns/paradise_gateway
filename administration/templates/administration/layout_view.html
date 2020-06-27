@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+
+<html lang="en-US">
+
+    
+  {% load static %} 
+    
+<!-- Mirrored from eazzy.me/html/traveline/hotel-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Nov 2019 10:51:20 GMT -->
+<head>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+ 
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Traveline Booking</title>
+
+
+
+        <link rel="stylesheet" href="{% static 'inc/bootstrap/css/bootstrap.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'styles/themes/default/stylesheet.css' %}" />
+
+     
+
+        <link rel="alternate stylesheet" type="text/css"  title="02" href="{% static 'styles/themes/style02/stylesheet02.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="03" href="{% static 'styles/themes/style03/stylesheet03.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="04" href="{% static 'styles/themes/style04/stylesheet04.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="05" href="{% static 'styles/themes/style05/stylesheet05.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="06" href="{% static 'styles/themes/style06/stylesheet06.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="07" href="{% static 'styles/themes/style07/stylesheet07.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="08" href="{% static 'styles/themes/style08/stylesheet08.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="09" href="{% static 'styles/themes/style09/stylesheet09.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="10" href="{% static 'styles/themes/style10/stylesheet10.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="11" href="{% static 'styles/themes/style11/stylesheet11.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="12" href="{% static 'styles/themes/style12/stylesheet12.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="13" href="{% static 'styles/themes/style13/stylesheet13.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="14" href="{% static 'styles/themes/style14/stylesheet14.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="15" href="{% static 'styles/themes/style15/stylesheet15.css' %}" />
+
+        <script src="{% static 'inc/js/styleswitch.js' %}" type="text/javascript">
+
+/***********************************************
+
+* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+
+* This notice MUST stay intact for legal use
+
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+
+***********************************************/
+
+</script>
+
+
+
+
+
+        <!-- Flexslider -->
+
+        <link rel="stylesheet" href="{% static 'styles/flexslider.css' %}" />
+
+
+
+        <!-- fontawesome -->
+
+        <link rel="stylesheet" href="{% static 'styles/fontawesome/font-awesome.min.css' %}" />
+
+
+
+        <!-- Datepicker UI -->
+
+        <link rel="stylesheet" href="{% static 'styles/jquery-ui-1.10.3.custom.min.css' %}" />
+
+
+
+        <!-- MI slider -->
+
+        <link rel="stylesheet" href="{% static 'styles/mi-slider.css' %}" />   
+
+
+
+        <!-- Chozen UI -->
+
+        <link rel="stylesheet" href="{% static 'styles/chosen.css' %}" />  
+
+
+
+        <!-- Range Slider UI #2 -->
+
+        <link rel="stylesheet" href="{% static 'styles/rangeslider-classic.css' %}" />
+
+
+
+        <!-- Elegant Font -->
+
+        <link rel="stylesheet" href="{% static 'inc/elegant-font/style.css' %}" />
+
+        <!--[if lte IE 7]><script src="{% static 'inc/elegant-font/lte-ie7.js' %}"></script><![endif]-->
+
+
+
+     <link rel="stylesheet" href="{% static 'demo/switcher.css' %}" />
+
+    </head>
+
+    <body>
+
+
+<div id="preloader">
+
+    <div id="status">&nbsp;</div>
+
+    <noscript>JavaScript is off. Please enable to view full site.</noscript>
+
+</div>
+
+
+
+        <div id="site">
+
+
+
+
+
+            <header id="header" class="wide-fat">
+
+
+
+                <div class="container">
+
+
+
+                    <div class="col-xs-12 col-sm-2 no-margin">
+
+                        <div class="branding">
+
+
+
+                            <h1 class="site-title">
+
+
+
+                                <a href="#"><img src="{% static 'images/site-logo.png' %}" alt="Traveline" /> <span>Paradise<span class="higlight">Gateway</span></span></a>
+
+
+
+                            </h1>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-10 no-margin">
+
+
+
+                        <div id="main-menu">
+
+
+
+                            <nav class="navigation">
+
+                                <ul class="hidden-xs hidden-sm hidden-md">
+
+                                     <li class="menu-item destinations">
+
+                                        <a href="{% url 'administration:add_package'%}"><i class="icon_pin"></i>Add Details</a>
+
+                                    </li>
+                                   
+
+                                     <li class="menu-item contact">
+
+                                        <a href="{% url 'administration:view_package'%}"><i class="icon_contacts"></i>View Package</a>
+
+                                    </li>
+
+                                
+
+                                    <li class="menu-item special-offers">
+
+                                        <a href="{% url 'administration:view_cab'%}"><i class="icon_ribbon"></i>View Cabs</a>
+
+                                    </li>
+
+                                    <li class="menu-item hotel">
+
+                                        <a href="{% url 'administration:view_hospital'%}"><i class="icon_building_alt"></i>View Hospitals</a>
+
+                                        
+
+
+                                    </li>
+
+                                    <li class="menu-item shortcodes">
+
+                                        <a href="{% url 'administration:view_hotels'%}"><i class="icon_map"></i>View Hotels</a>
+
+                                       
+
+                                    </li>
+
+
+
+                                    <li class="menu-item contact">
+
+                                        <a href="{% url 'administration:view_petrol'%}"><i class="icon_contacts"></i>View Petrol Pumbs</a>
+
+                                    </li>
+
+                                    <li class="menu-item contact">
+
+                                        <a href="{% url 'administration:view_medical'%}"><i class="icon_contacts"></i>View Medical Store</a>
+
+                                    </li>
+                                    <li class="menu-item contact">
+
+                                        <a href="{% url 'administration:view_railway'%}"><i class="icon_contacts"></i>View Railway</a>
+
+                                    </li>
+                                    <li class="menu-item contact">
+
+                                        <a href="{% url 'administration:view_bus'%}"><i class="icon_contacts"></i>View Busstand</a>
+
+                                    </li>
+                                     <li class="menu-item contact">
+
+                                        <a href="{% url 'administration:view_user'%}"><i class="icon_contacts"></i>View users</a>
+
+                                    </li>
+
+
+
+                                
+
+                            </nav>
+ <li class="menu-item contact" style="list-style:none;">
+    <div style="padding-left: 950px;margin: -61px;display: block;font-size: 12px;">
+
+                                        <a href="{% url 'administration:user_logout'%}"><i class="fa fa-sign-out"></i>logout</a>
+                                        </div>
+                                    </li>
+
+
+                        </div><!-- /#main-menu -->
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+{%block content%}
+ 
+
+
+
+
+
+{%endblock%}
+
+
+
+
+        </div><!-- /#site -->
+
+
+
+
+
+<!-- Scripts -->
+
+    
+
+    <!-- jQuery -->
+
+    
+
+      
+
+        <script src="{% static 'inc/js/jquery-1.10.2.min.js' %}"></script>
+
+        <script src="{% static 'inc/js/jquery-migrate-1.2.1.js' %}"></script>
+
+    
+
+    <!-- modernizer -->
+
+    
+
+      
+
+        <script src="{% static 'inc/js/modernizr.custom.63321.js' %}"></script>
+
+    
+
+    <!-- FlexSlider -->
+
+    <script type="text/javascript" src="{% static 'inc/js/jquery.flexslider-min.js' %}"></script>  
+
+    
+
+    
+
+    <!-- CatSlider -->
+
+    <script type="text/javascript" src="{% static 'inc/js/jquery.catslider.js' %}"></script>   
+
+
+
+    
+
+    <!-- Datepicker -->
+
+    <script type="text/javascript" src="{% static 'inc/js/jquery.ui.datepicker.min.js' %}"></script>   
+
+    
+
+    
+
+    <!-- Masonry -->
+
+    <script type="text/javascript" src="{% static 'inc/js/masonry.min.js' %}"></script>    
+
+
+
+    
+
+    
+
+    <!-- Increase/decrease quantity -->
+
+    <script type="text/javascript" src="{% static 'inc/js/increase-decrease-qty.js' %}"></script>  
+
+    
+
+    <!-- Mixitup (filterable item) -->
+
+    <script type="text/javascript" src="{% static 'inc/js/jquery.mixitup.min.js' %}"></script> 
+
+    
+
+    
+
+    <!-- Google Map JS -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+
+    <script type="text/javascript" src="{% static 'inc/js/google-map-infobox.js' %}"></script>     
+
+        
+
+    
+
+    <!-- Responsive Google Map (Fitmaps) JS -->
+
+    <script type="text/javascript" src="{% static 'inc/js/jquery.fitmaps.js' %}"></script> 
+
+    
+
+    <!-- Chozen UI JS -->
+
+    <script type="text/javascript" src="{% static 'inc/js/chosen.jquery.js' %}"></script>  
+
+            
+
+    
+
+    <!-- Checkbox/Radio UI JS -->
+
+    <script type="text/javascript" src="{% static 'inc/js/jquery.screwdefaultbuttonsV2.js' %}"></script>   
+
+        
+
+    
+
+    <!-- Range Slider UI JS #2 -->
+
+    <script type="text/javascript" src="{% static 'inc/js/jquery.mousewheel.min.js' %}"></script>  
+
+    <script type="text/javascript" src="{% static 'inc/js/jQRangeSlider-min.js' %}"></script>  
+
+    <!-- bootstrap JS -->
+
+        <script type="text/javascript" src="{% static 'inc/bootstrap/js/bootstrap.min.js' %}"></script>        
+
+    <!-- raty JS -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.raty.min.js' %}"></script>    
+
+    <!-- Custom JS -->
+
+    <script type="text/javascript" src="{% static 'inc/js/custom.js' %}"></script> 
+
+
+    <script type="text/javascript">
+    
+
+var count=0  
+$(document).on('click','#add_row',function(e){
+    count=count+1
+$("#appen_place").append(' <div class="row field-row" id=""><div class="col-xs-12 col-sm-4"><input type="text" class="required " placeholder="Place" name="place'+count+'"></div><div class="col-xs-12 col-sm-4"><input type="text" class="required" placeholder="Location" name="location'+count+'"></div>  <div class="col-xs-12 col-sm-4"><input type="text" class="required" placeholder="Pincode" name="pincode'+count+'">  </div>    <div class="col-xs-12 col-sm-4"><input type="time" class="required" placeholder="Start_time" name="starttime'+count+'"  id="starttime"> </div> <div class="col-xs-12 col-sm-4"> <input type="time" class="required" placeholder="End_time" name="endtime'+count+'" id="endtime"><input type="hidden" name="count" value="'+count+'"></div> <div class="col-xs-12 col-sm-4"><input type="button" class="button green narrow" id="add_row" value="Add"></div></div>')
+});
+
+</script>
+
+    </body>
+
+
+<!-- Mirrored from eazzy.me/html/traveline/hotel-detail-travel-info.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Nov 2019 10:51:46 GMT -->
+</html>

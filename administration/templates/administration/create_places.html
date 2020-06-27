@@ -1,0 +1,245 @@
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+            <div class="modal fade" id="loginBox" tabindex="-1" role="dialog"  aria-hidden="true">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+
+
+
+                        <div class="modal-body">
+
+                            
+
+                                <div class=" field-row">
+
+
+
+                                    <input  placeholder="Username">
+
+
+
+
+
+
+
+
+
+                                    <input  type="password" placeholder="Password">
+
+
+
+
+
+                                    <div class="custom-checkbox-holder">
+
+                                        <input class="custom-checkbox" type="checkbox" >
+
+
+
+                                        <span>Remember me on this computer.</span>
+
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+                               
+
+                            
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <section class="page-head-holder">
+
+                <div class="container">
+
+                    <div class="col-xs-6">
+
+
+
+                        <h2>Event Planner</h2>
+
+                    </div>
+ <form class="info-form" action="{% url 'administration:event_planner_user' pack_id %}" method="post">
+                               
+                                     {% csrf_token %}
+                    <div class="col-xs-6">
+
+                        <div class="breadcrumb-holder">
+
+                            <ol class="breadcrumb">
+
+                                <table>
+  
+  
+</table>
+
+
+
+                            </ol>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+
+
+
+
+                    
+
+<table>
+  <tr>
+    <th>Place No</th>
+    <th>Name</th>
+    <th>Kilometres from your location before turn</th>
+    <th>Kilometers you should travel more</th>
+    <th>Select places</th>
+   
+   
+    
+    
+  </tr>
+   {% for x in place_det%}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{x.place}}</td>
+     <td>{{x.kilometers}}</td>
+      <td>{{x.kilometers_more}}</td>
+  
+
+    
+    
+
+       <td><input type="checkbox" name="checked_place{{forloop.counter}}" value="{{x.id}}"></td>
+       <!-- <input type="text" name="km" value="{{forloop.counter}}" style="display: none;"> -->
+       <input type="text" name="loop" value="{{forloop.counter}}" style="display: none;">
+   
+  </tr>
+  {% endfor %}
+ 
+  
+</table>
+<input type="submit" name="submit">
+
+</form>
+<br><br><br><br>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+           <!-- /#hotels.section -->		
+
+
+<script src="{% static 'inc/jquery-3.3.1/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'inc/select2/dist/js/select2.full.js' %}"></script>
+    <script type="text/javascript">
+       
+        $('#cat').select2();
+         $("#cat").on("select2:select", function (e) {
+window.open(e.params.data.id);
+});
+         $(document).on('click','#Search',function(e){
+          $('.js-example-basic-single').select2();
+         });
+    </script>
+{%endblock%}    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         

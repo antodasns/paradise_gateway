@@ -1,0 +1,203 @@
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+<section class="section wide-fat">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <div class="col-xs-12 col-sm-4">
+
+                        <div class="sidebar-holder">
+
+                            <article class="entry-content">
+
+                               
+                                <h2 class="post-title">{{details.name}}</h2>
+
+
+
+                               
+
+                                <div class="rating-area">
+
+                                   
+
+                                    <div class="bars">
+
+                                       
+
+                                    </div>
+
+                                    <hr>
+
+
+
+                                    <a href="{{details.location}}" class="button green wide-fat capital">Location</a>
+
+                                    <a href="{% url 'administration:book_hotel' details.id %}" class="button green wide-fat capital">Book now</a>
+                                    <div class="container">
+                                         {% for x in ratings%}
+                                        <div class="col-xs-7">
+                                            <h3 style="color:#210085">{{x.user_name}}</h3>
+                                            <h4 style="display: inline;">Rating : &nbsp;</h4>{{x.rating}}
+                                        <h4>Review</h4>
+                                {{x.review}}<br><h5></h5>
+
+                                </div>
+                                  {% endfor %}
+                            </div>
+                    </div>
+
+
+
+
+
+                            </article>
+ <section class="page-head-holder" style="width: 1200px;">
+
+                <div class="container">
+
+                    <div class="col-xs-4">
+
+ <form class="info-form" method="post" action="{% url 'administration:add_rating_hotel' details.id %}">
+                                {% csrf_token %}
+
+                        <h2>&nbsp;Rating</h2>
+
+
+                                <table>
+                       <tr>
+    <th><i class="fa fa-star"></i></th>
+    <th><i class="fa fa-star"></i><i class="fa fa-star"></i></th>
+    <th><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></th>
+    <th><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></th>
+    <th><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></th>
+ 
+  </tr>
+  <tr>
+    <td><input type="radio" name="rate" value="1"></td>
+    <td><input type="radio" name="rate" value="2"></td>
+    <td><input type="radio" name="rate" value="3"></td>
+    <td><input type="radio" name="rate" value="4"></td>
+    <td><input type="radio" name="rate" value="5"></td>
+    
+  
+    </td>
+
+
+  </tr>
+</table>
+</ol>
+<br>
+
+
+                    </div>
+                     <div class="col-xs-4">
+
+
+
+                        <h2>Reviews</h2>
+                       <input type="text" id="" name="review" style="height: 80px;">
+                        
+
+                    </div>
+                    <br><br><br><br><br>
+                     <div class="col-xs-3">
+                      <button type="submit" class="button green narrow">Submit</button>
+
+
+
+                        </form>
+
+                    </div>
+
+                   
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+                            
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                         
+                       
+
+
+            </section>
+</div>
+
+
+{%endblock%}   
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+

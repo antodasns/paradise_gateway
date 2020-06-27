@@ -1,0 +1,191 @@
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+           
+
+
+
+            <section id="featured" class="wide-fat">
+
+
+
+                <div class="featured-inner">
+
+
+
+
+
+
+
+                    <div class="slider">
+
+                        <div id="top-slider" class="flexslider">
+
+                            <ul class="slides">
+
+                                <li>
+
+                                    <img src="{% static 'images/content/feature-img.jpg' %}" alt="Featured Image" />
+
+                                </li>
+
+                                
+                            </ul><!-- /.slides -->
+
+                            
+                            </div>
+
+                            <div class="featured-overlay">
+
+
+
+                                
+
+
+                                <div class="featured-overlay-inner">
+
+
+
+
+
+                                    <form class="location-search" action="{% url 'administration:user_search_package'%}"  method="post" >
+
+                                           {% csrf_token %}
+
+                                        <div class="search-field">
+
+                                            <div class="destination-field">
+                                                <label for="destination">From</label><br/>
+                                                <select id="" name="" style="width: 500px; height:30px;">
+                                                    
+                                                    <option>Trivandrum</option>
+                                                  
+                                                </select><br>
+
+
+                                                <label for="destination">Choose your Destination</label><br/>
+
+                                               
+                                                <select id="destination" name="searches" style="width: 500px; height:30px;">
+                                                     {% for x in full%}
+                                                    <option>{{x.package_name}}</option>
+                                                    {% endfor %}
+                                                </select>
+
+                                            </div>
+
+                                        </div><!-- /.search-field -->
+
+
+
+                                        
+
+                                        <div class="search-field">
+
+
+
+
+                                            <input type="submit" class="button wide-fat" value="Search" /><br>&nbsp;
+                                            <input type="button" class="button wide-fat" value="Rate app" onclick="window.location.href='{% url 'administration:rate_app'%}'"/><br>&nbsp;
+                                            <input type="button" class="button wide-fat" value="View all packages" onclick="window.location.href='{% url 'administration:user_view_package'%}'"/>
+
+
+
+
+                                        </div><!-- /.search-field -->							
+
+
+
+                                    </form><!-- /form.location-search -->
+
+
+
+
+
+
+
+                                 <table>
+  <tr>
+    <th>Latest Packages</th>
+    <th></th>
+  
+    
+  </tr>
+   {% for x in last_five%}
+  <tr>
+    <td>{{x.package_name}}</td>
+    <td><a href="{% url 'administration:select_places' x.id %}">View</a></td>
+    {% endfor %}
+
+  </tr>
+ 
+  
+</table><!-- /.featured-teaser-text -->
+
+
+
+
+
+                                   <!-- /.social-networks -->
+
+
+
+
+
+                                </div><!-- /.featured-overlay-inner -->
+
+
+
+                            </div><!-- /.featured-overlay -->
+
+
+
+                        </div>
+
+                    </div><!-- /.slider -->					
+
+
+
+
+
+                </div><!-- /.featured-inner -->
+
+
+
+            </section><!-- /#featured -->
+
+
+
+
+
+
+
+            
+
+
+
+
+
+                </div>
+
+
+
+
+{%endblock%}    
+           
+
+
+
+
+
+
+
+
+
+
+
+
+            

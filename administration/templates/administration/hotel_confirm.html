@@ -1,0 +1,224 @@
+
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+            <section class="page-head-holder">
+
+                <div class="container">
+
+                    <div class="col-xs-12 col-sm-6">
+
+
+
+                        <h2>Booking Confirmation</h2>
+
+                    </div>
+
+                   
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <section id="confirm-page" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <div class="col-xs-12 col-sm-8">
+
+                        <div class="confirm-page">
+
+                            <h1>thank you. your booking is now confirmed</h1>
+
+                            <hr>
+
+                            <article>
+
+                                <h2>traveller info</h2>
+
+                                <ul class="tabled-ul">
+
+                                    <li>
+
+                                        <div class="lbl">booking number</div>
+
+                                        <div class="value">{{bookin_id}}</div>
+
+                                    </li>
+
+                                    <li>
+
+                                        <div class="lbl">Name</div>
+
+                                        <div class="value">{{user_det.username}}</div>
+
+                                    </li>
+
+                                    
+                                    <li>
+
+                                        <div class="lbl">email</div>
+
+                                        <div class="value">{{user_det.email}}</div>
+
+                                    </li>
+
+                                   
+
+                                </ul>
+
+                            </article>
+
+                            
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-xs-12 col-sm-4">
+
+                        <div class="sidebar-holder">
+
+                            <article class="entry-content">
+
+                                <h2 class="post-title"><a href="#" title="Your Hotel Title Here">Your Room Details</a></h2>
+
+
+
+                               
+
+                                <hr>
+
+
+
+                            
+
+                               
+
+
+
+
+
+                            </article>
+
+
+
+                            <div class="spicifications-widget">
+
+
+
+                                <ul>
+
+                                    <li>
+
+                                        <div class="lbl">No of rooms</div>
+
+                                        <div class="value">{{no_of_rooms}}</div>
+
+                                    </li>
+
+                                    <li>
+
+                                        <div class="lbl">Total Persons</div>
+
+                                        <div class="value">{{no_of_persons}}</div>
+
+                                    </li>
+
+                                    <li>
+
+                                        <div class="lbl">check in date</div>
+
+                                        <div class="value">{{check_in}}</div>
+
+                                    </li>
+
+                                    <li>
+
+                                        <div class="lbl">checkout date</div>
+
+                                        <div class="value">{{check_out}}</div>
+
+                                    </li>
+
+
+
+                                  
+
+                                </ul>
+
+                                <hr>
+
+                                
+
+                                <a href="#" class="button wide-fat" onClick="window.print()">Print Booking</a>
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </section>
+
+
+
+
+</div>
+{%endblock%}  

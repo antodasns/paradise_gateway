@@ -1,0 +1,193 @@
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+            <div class="modal fade" id="loginBox" tabindex="-1" role="dialog"  aria-hidden="true">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+
+
+
+                        <div class="modal-body">
+
+                            <form>
+
+                                <div class=" field-row">
+
+
+
+                                    <input  placeholder="Username">
+
+
+
+
+
+
+
+
+
+                                    <input  type="password" placeholder="Password">
+
+
+
+
+
+                                    <div class="custom-checkbox-holder">
+
+                                        <input class="custom-checkbox" type="checkbox" >
+
+
+
+                                        <span>Remember me on this computer.</span>
+
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+                                <button type="submit" class="button green">Login Now</button>
+
+                            </form>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <section class="page-head-holder">
+
+                <div class="container">
+
+                    <div class="col-xs-4">
+
+
+
+                        <h2>&nbsp;Reviews</h2>
+
+
+                                <table>
+                       <tr>
+    <th>Bad</th>
+    <th>Average</th>
+    <th>Good</th>
+    <th>Recomanded</th>
+   
+ 
+  </tr>
+  <tr>
+    <td><input type="radio" checked="checked" name="radio"></td>
+    <td><input type="radio" checked="checked" name="radio"></td>
+    <td><input type="radio" checked="checked" name="radio"></td>
+    <td><input type="radio" checked="checked" name="radio"></td>
+    
+  
+    </td>
+
+
+  </tr>
+</table>
+</ol>
+<br>
+
+
+                    </div>
+                     <div class="col-xs-4">
+
+
+
+                        <h2>Rating</h2>
+                       <input type="text" id="" name="" style="height: 80px;">
+                        
+
+                    </div>
+                    <br><br><br><br><br>
+                     <div class="col-xs-4">
+                      <input type="submit" id="" name="">
+
+
+
+                        
+
+                    </div>
+
+                   
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+           <!-- /#hotels.section -->		
+
+
+<script src="{% static 'inc/jquery-3.3.1/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'inc/select2/dist/js/select2.full.js' %}"></script>
+    <script type="text/javascript">
+       
+        $('#cat').select2();
+         $("#cat").on("select2:select", function (e) {
+window.open(e.params.data.id);
+});
+         $(document).on('click','#Search',function(e){
+          $('.js-example-basic-single').select2();
+         });
+    </script>
+{%endblock%}    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         

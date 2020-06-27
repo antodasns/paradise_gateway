@@ -1,0 +1,118 @@
+
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+<section class="section wide-fat">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+                    <table>
+                        <h1>View Hotel booking</h1>
+                        
+  <tr>
+    <th>Booking No</th>
+    <th>Hotel Name</th>
+    <th>Check in</th>
+    <th>Check out</th>
+    
+    
+  </tr>
+  {% for x in hotel_book%}
+
+  <tr>
+    <td>{{x.id}}</td>
+    <td>{{x.hotel_name}}</td>
+    <td>{{x.check_in}}</td>
+    <td>{{x.check_out}}</td>
+  </tr>
+
+  
+ {% endfor %}
+                    
+</table>
+
+ <table>
+                        <h1>View Cab booking</h1>
+                        
+  <tr>
+    <th>Booking No</th>
+    <th>Cab Name</th>
+    <th>Date</th>
+    <th>Time</th>
+    
+  </tr>
+  {% for x in cab_book%}
+  <tr>
+    <td>{{x.id}}</td>
+    <td>{{x.cab_name}}</td>
+    <td>{{x.date}}</td>
+    <td>{{x.time}}</td>
+  </tr>
+   {% endfor %}
+
+                    
+</table>
+
+
+                         
+                       
+
+
+            </section>
+</div>
+
+
+{%endblock%}   
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+

@@ -1,0 +1,328 @@
+{%extends 'administration/layout_user.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+
+
+            <section class="page-head-holder">
+
+                <div class="container">
+
+                    <div class="col-xs-6">
+
+
+
+                        <h2>Cab</h2>
+
+                    </div>
+
+                    <div class="col-xs-6">
+
+                        <div class="breadcrumb-holder">
+
+                            <ol class="breadcrumb">
+
+                                <li><a href="#">Home</a></li>
+
+                                <li class="active"><a href="#">Cab</a></li>
+
+
+
+                            </ol>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <section id="hotels" class="section wide-fat page">
+
+
+
+
+
+                <div class="container">	
+
+
+
+
+
+
+
+
+
+                    <div class="hotels-filter">
+
+
+
+                        
+
+
+
+                    </div><!-- /.hotels-filter -->
+
+
+
+
+
+
+
+                    <div class="contents-wrapper">
+
+
+
+                        <div class="row">
+
+
+
+
+
+                            <div class="sidebar col-md-12  col-xs-12">
+
+
+
+
+
+                                <div class="widget">
+
+
+
+                                    <h3 class="widget-title">Cab Booking</h3>
+
+
+
+                                    <div class="location-search-widget">
+
+
+
+                                         <form class="location-search"  method="post" action="{% url 'administration:save_cab_book' details.id %}">
+                                                {% csrf_token %}
+
+
+                                            <div class="search-field">
+
+                                                <div class="destination-field">
+
+                                                    <input id="" type="text"  value="{{details.name}}" />
+
+                                                </div>
+
+                                            </div><!-- /.search-field -->
+
+
+
+                                            <div class="search-field">
+
+
+
+                                                <div class="col-field-left">
+
+                                                    <label for="check-in-date2">date</label>
+
+                                                    <br />
+
+                                                    <input id="check-in-date2" class="traveline_date_input" type="text" value="d MM yy" name="date" />
+
+                                                </div>
+
+
+
+                                                <div class="col-field-right">
+
+                                                    <label for="check-out-date2">Time</label>
+
+                                                    <br />
+
+                                                    <input id="" class="" type="time" value="" name="time" />
+
+                                                </div>									
+
+
+
+                                            </div><!-- /.search-field -->
+
+
+
+                                            
+
+
+
+
+
+                                                <div class="col-field-right">
+
+
+
+                                                    <div class="col-field-left">
+
+
+
+                                                        <div class="adult-left">
+
+                                                            <label for="adult">No of cabs required</label>
+
+                                                            <br />
+
+                                                            <div class="quantity">
+
+                                                                <input id="adult" class="qty" type="text"  name="no_of_cabs" />
+
+                                                            </div>
+
+                                                        </div>	
+
+
+
+                                                    </div>		
+
+
+
+                                                    <div class="col-field-right">
+
+
+
+                                                        <div class="children-field">
+
+                                                            <label for="children">Total persons</label>
+
+                                                            <br />
+
+                                                            <div class="quantity">
+
+                                                                <input id="children" class="qty" type="text" name="no_of_person" />
+
+                                                            </div>
+
+                                                        </div>	
+
+
+
+                                                    </div>
+
+
+
+                                                </div>	
+
+
+
+                                            </div><!-- /.search-field -->	
+
+                                            <br>
+
+                                            <div class="search-field">
+
+
+
+                                                <input type="submit" class="button wide-fat" value="Book Now" />
+
+
+
+                                            </div><!-- /.search-field -->							
+
+
+
+                                        </form><!-- /form.location-search --> 
+
+
+
+                                    </div>
+
+
+
+                                </div><!-- /.widget -->
+
+
+
+
+
+
+
+                                
+                                    </div><!-- /.content -->
+
+
+
+
+
+
+
+
+
+                                </div><!-- /.row -->
+
+                            </div><!-- /.contents.grid-contents -->
+
+
+
+                        </div><!-- /.row -->
+
+
+
+                    </div><!-- /.contents-wrapper -->
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </section><!-- /#hotels.section -->		
+
+
+
+
+
+
+</div>
+
+{%endblock%}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           

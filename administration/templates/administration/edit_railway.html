@@ -1,0 +1,132 @@
+{%extends 'administration/layout_add.html'%}
+{% load static %}
+ 
+{%block content%}
+
+
+            </header>
+
+<section id="travel-info" class="section wide-fat reservation-pages">
+
+
+
+
+
+                <div class="container"> 
+
+
+
+
+
+                    <div class="col-xs-12 col-sm-12">
+
+                        <div class="form-holder">
+
+                           <form class="info-form" method="post" action="{% url 'administration:update_railway' details.id %}">
+                                <h1>Edit Railway station</h1>
+                                 {% csrf_token %}
+                               <div class="row field-row">
+
+                                    <div class="col-xs-16 col-sm-4">
+
+                                        <input type="text" class="required " placeholder="Name" name="name" value="{{details.name}}">
+
+                                    </div>
+
+
+
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="text" class="required" placeholder="Phone_number" name="phone" value="{{details.phone}}">
+
+
+
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="text" class="required" placeholder="Pincode" name="pincode" value="{{details.pincode}}">
+
+
+
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-4">
+
+
+
+                                        <input type="text" class="required" placeholder="Location" name="location" value="{{details.location}}">
+
+
+
+                                    </div>
+                                    
+
+
+                                </div>
+
+
+
+                               
+
+                                
+
+                                <button type="submit" class="button green narrow">Submit</button>
+
+                            </form>
+
+                        </div>   
+                       
+
+
+            </section>
+
+{%endblock%}   
+
+
+                   
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!-- /#footer -->
+
+
+
+
+
+
