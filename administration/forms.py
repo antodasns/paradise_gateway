@@ -16,7 +16,10 @@ salary_type=(
 	('female','female')
 	)
 
-
+user_types=(
+	('user','user'), 
+	('store','store')
+	)
 
 # class create_staffs(forms.ModelForm):
 
@@ -59,14 +62,16 @@ class UserForm(forms.ModelForm):
 	password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'margin-top-10','placeholder':'Password'}))
 	# role=forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'form-control',}))
 	confirm_password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'margin-top-10','placeholder':'Confirm Password'}))
+
 	class Meta:
 		model=User
-		fields=['username','email','password']
+		fields=['username','email','password','last_name']
 		widgets = {
            
            
             'username': forms.TextInput(attrs={'class':'margin-top-10','placeholder':'Username'}),
             'email': forms.TextInput(attrs={'class':'margin-top-10','placeholder':'Email'}),
+            'last_name': forms.Select(choices=user_types,attrs={'class':'margin-top-10 chosen-select'}),
           
         }
 

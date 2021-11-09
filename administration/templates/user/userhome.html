@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+ {% load static %} 
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Title Of Site -->
+	<title>Cyclone Tour - Tour hosting</title>
+	<meta name="description" content="HTML template for multiple tour agency, local agency, traveller, tour hosting based on Twitter Bootstrap 3.x.x" />
+	<meta name="keywords" content="tour agency, tour guide, travel, trip, holiday, vocation, relax, adventure, virtual tour, tour planner" />
+	<meta name="author" content="crenoveative">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<!-- Fav Icons -->
+	<link rel="shortcut icon" href="{% static '/user/images/ico/favicon.png' %}">
+
+	<!-- CSS Plugins -->
+	<link rel="stylesheet" type="text/css" href="{% static '/user/bootstrap/css/bootstrap.min.css' %}" media="screen">	
+	<link href="{% static '/user/css/main.css' %}" rel="stylesheet">
+	<link href="{% static '/user/css/plugin.css' %}" rel="stylesheet">
+
+	<!-- CSS Custom -->
+	<link href="{% static '/user/css/style.css' %}" rel="stylesheet">
+	
+	<!-- Add your style -->
+	<link href="{% static '/user/css/your-style.css' %}" rel="stylesheet">
+	
+</head>
+
+<body class="home-one transparent-header">
+
+	<!-- start Container Wrapper -->
+	<div class="container-wrapper">
+
+		<!-- start Header -->
+		<header id="header">
+			
+
+			<!-- start Navbar (Header) -->
+			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function navbar-arrow">
+
+				<div class="container">
+
+					<div class="logo pull-left">
+						<a href="index.html"><img src="images/logo.png" alt=""></a>
+					</div>
+					
+					<div id="navbar" class="navbar-nav-wrapper pull-right">
+					
+						<ul class="nav navbar-nav" id="responsive-menu">
+						
+							<li class="active">
+								<a href="{% url 'administration:user_management' %}">Home</a>
+								
+							</li>
+							
+							<li>
+								<a href="{% url 'administration:user_view_package' %}">Packages</a>
+								
+							</li>
+							<li><a href="#">Bookings</a>
+								<ul>
+									<li><a href="{% url 'administration:user_view_booked_package' %}">Package</a></li>
+									<li><a href="{% url 'administration:user_view_booking' %}">Hotels and Cabs</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="{% url 'administration:view_blog' %}">Blog</a>
+								
+							</li>
+							<li><a href="about-us.html">About Us</a>
+							</li>
+						</ul>
+				
+					</div><!--/.nav-collapse -->
+				
+				</div>
+				
+				<div id="slicknav-mobile"></div>
+			</nav>
+			<!-- end Navbar (Header) -->
+		</header>
+		<!-- end Header -->
+
+		<!-- start Main Wrapper -->
+		<div class="main-wrapper scrollspy-container">
+		
+			<!-- start hero-header -->
+			<div class="hero main-slider">
+				
+				<div class="slider fading">
+					<div><div class="image"><img src="{% static '/user/images/banner/01.jpg' %}" alt="slider"/></div></div>
+					<div><div class="image"><img src="{% static '/user/images/banner/02.jpg' %}" alt="slider"/></div></div>
+					<div><div class="image"><img src="{% static '/user/images/banner/03.jpg' %}" alt="slider"/></div></div>
+					<div><div class="image"><img src="{% static '/user/images/banner/01.jpg' %}" alt="slider"/></div></div>
+					<div><div class="image"><img src="{% static '/user/images/banner/02.jpg' %}" alt="slider"/></div></div>
+				</div>
+
+				<div class="slider-content">
+					<div class="container">
+
+						<div class="wrap-content">
+							<h1>Go, Check and Get Your World</h1>
+							<p>The world is a book, and those who do not travel read only a page</p>
+							<form>
+								<div class="form-group">
+									<input type="text" placeholder="eg: London, Paris, Rome" class="form-control flexdatalist" data-data="data/countries.json" data-search-in='["name","capital"]' data-visible-properties='["capital","name","continent"]' data-group-by="continent" data-selection-required="true" data-focus-first-result="true" data-min-length="1" data-value-property="iso2" data-text-property="{capital}, {name}" data-search-contain="false" name="countries">
+									<button class="btn"><i class="icon-magnifier"></i></button>
+								</div>
+							</form>
+							<div class="top-search">
+								<span class="font700">Top Searches : </span>
+								<a href="#">Thailand</a>
+								<a href="#">Malaysia</a>
+								<a href="#">Japan</a>
+								<a href="#">Hong Kong</a>
+								<a href="#">Singapore</a>
+							</div>
+						</div><!--  end wrap content -->
+					</div>
+				</div><!--  end slider content -->
+				<div class="dot-overlay"></div>
+				<div class="overlay"></div>
+			</div>
+			<!-- end hero-header -->
+
+			<!-- start popular tour -->
+			<section class="popular">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+							<div class="section-title"><!-- start section title -->
+								<h2>Popular Tour</h2>
+								<p>We have a unique way of meeting your adventurous expectations!</p>
+							</div><!-- end section title -->
+						</div>
+					</div>
+
+					<div class="popular">
+						{% for x in last_five%}
+						<div class="col-sm-4 col-xs-6">
+							<div class="top-destination-item">
+								<a href="#">
+									<div class="image">
+										<img src="images/experiences/01.jpg" alt="images" />
+										<i class="fa fa-heart-o"></i>
+										<h4 class="blue">Travel</h4>
+										<span>$120</span>
+										<div class="overlay"></div>
+									</div>	
+								</a>
+							</div><!-- end top destination item -->
+
+							<div class="top-details">
+								<div class="top-content">
+									<h3><a href="{% url 'administration:select_places' x.id %}">{{x.package_name}}</a></h3>
+									<p>Lorem ipsum dolor sit amet, consectetuer</p>
+								</div>
+
+								<p><input type="hidden" class="rating" data-filled="fa fa-star rating-rated" data-empty="fa fa-star-o" data-fractions="2" data-readonly value="4.5"/> 52 reviews</p>
+							</div><!-- end top details -->
+						</div><!-- end popular item -->
+						 {% endfor %}
+						
+
+					</div><!-- end popular -->
+
+					<div class="destination-all">
+						<a href="#">See All Popular Tours</a>
+					</div><!-- end button -->
+				</div>	
+			</section>
+			<!-- end popular tour -->
+
+			<!-- start Top Destinations -->
+			<section class="videos layout-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="video-wrapper padding-top padding-bottom">
+                                <h5 class="sub-title">it’s a
+                                    <strong>big world</strong> out there</h5>
+                                <h2 class="title">Go Cyclone</h2>
+                                <div class="text">There are many variations of passages of. Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look.</div>
+                                <a href="experiences-detail-1.html" class="btn btn-primary">read more</a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="video-thumbnail">
+                                <div class="video-bg">
+                                    <iframe src="https://www.youtube.com/embed/moOosWuoDyA?rel=0" allowfullscreen="allowfullscreen" class="video-embed"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+            </section>
+			<!-- end Top Destinations -->
+
+			<!-- start blog -->
+			<section class="blog">
+			
+				<div class="container clearfix">
+					<div class="row">					
+						<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+							<div class="section-title"><!-- start section title -->						
+								<h2>Latest Blog</h2>
+								<p>“The trips that offered by local guides or experts for travellers”</p>							
+							</div><!-- end section title -->						
+						</div>					
+					</div>
+
+					<div class="trip-guide-wrapper">					
+						<div class="row">							
+							<div class="col-xs-4 col-sm-4">									
+								<div class="trip-guide-item">
+									<div class="trip-guide-image">
+										<img src="images/blog/01.jpg" alt="images" />
+									</div>
+										
+									<div class="trip-guide-content">
+										<h3>Bangkok-Pattaya</h3>
+										<p><i class="fa fa-calendar"></i> May 26, 2017</p>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+									</div>
+
+									<div class="trip-guide-bottom">										
+										<div class="trip-guide-person clearfix">
+											<p class="red"><a href="#">Hotels</a></p>
+											<p class="pull-right"><a href="#"><i class="fa fa-comments"></i><span>38</span></a></p>
+										</div>										
+									</div>									
+								</div><!-- end trip guide item -->								
+							</div>
+								
+							<div class="col-xs-4 col-sm-4">								
+								<div class="trip-guide-item">									
+									<div class="trip-guide-image">
+										<img src="images/blog/02.jpg" alt="images" />
+									</div>
+										
+									<div class="trip-guide-content">
+										<h3>Mount Fuji</h3>
+										<p><i class="fa fa-calendar"></i> March 26, 2017</p>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+									</div>
+
+									<div class="trip-guide-bottom">										
+										<div class="trip-guide-person clearfix">
+											<p class="green"><a href="#">Community</a></p>
+											<p class="pull-right"><a href="#"><i class="fa fa-comments"></i><span>7</span></a></p>
+										</div>										
+									</div>
+									<div class="overlay-new"></div>					
+								</div><!-- end trip guide item -->
+							</div>
+								
+							<div class="col-xs-4 col-sm-4">									
+								<div class="trip-guide-item">									
+									<div class="trip-guide-image">
+										<img src="images/blog/03.jpg" alt="images" />
+									</div>
+										
+									<div class="trip-guide-content">
+										<h3>Hong Kong</h3>
+										<p><i class="fa fa-calendar"></i> April 26, 2017</p>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.</p>
+									</div>
+
+									<div class="trip-guide-bottom">										
+										<div class="trip-guide-person clearfix">
+											<p class="blue"><a href="#">Photography</a></p>
+											<p class="pull-right"><a href="#"><i class="fa fa-comments"></i><span>12</span></a></p>
+										</div>											
+									</div>					
+								</div><!-- end trip guide item -->							
+							</div>						
+						</div>
+					</div><!-- end trip guide wrapper -->					
+				</div>
+			</section>
+			<!-- end blog -->
+			
+		</div>
+		<!-- end Main Wrapper -->
+		
+		<!-- start Footer Wrapper -->
+		<div class="footer-wrapper scrollspy-footer">
+			<footer class="main-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 class="footer-title">newsletter</h5>
+							<p class="font16">Subsribe to get our latest updates and oeffers</p>
+							<div class="footer-newsletter">								
+								<div class="form-group">
+									<input class="form-control" placeholder="enter your email " />
+									<button class="btn btn-primary">subsribe</button>
+								</div>								
+								<p class="font-italic font13">*** Don't worry, we wont spam you!</p>							
+							</div>
+						</div>
+						
+						<div class="col-sm-8">						
+							<div class="row">								
+								<div class="col-xs-4 col-sm-3 col-sm-offset-3">
+									<h5 class="footer-title">footer</h5>
+									<ul class="footer-menu">
+										<li><a href="#">Support</a></li>
+										<li><a href="#">Advertise</a></li>
+										<li><a href="#">Media Relations</a></li>
+										<li><a href="#">Affiliates</a></li>
+										<li><a href="#">Careers</a></li>
+									</ul>
+								</div>
+								
+								<div class="col-xs-4 col-sm-3">
+									<h5 class="footer-title">quick  links</h5>
+									<ul class="footer-menu">
+										<li><a href="#">Media Relations</a></li>
+										<li><a href="#">Affiliates</a></li>
+										<li><a href="#">Careers</a></li>
+										<li><a href="#">Support</a></li>
+										<li><a href="#">Advertise</a></li>
+									</ul>
+								</div>
+								
+								<div class="col-xs-4 col-sm-3">								
+									<h5 class="footer-title">helps</h5>
+									<ul class="footer-menu">
+										<li><a href="#">Using a Tour</a></li>
+										<li><a href="#">Submitting a Tour</a></li>
+										<li><a href="#">Managing My Account</a></li>
+										<li><a href="#">Merchant Help</a></li>
+										<li><a href="#">White Label Website</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>						
+					</div>					
+				</div>				
+			</footer><!-- end main footer -->
+			
+			<footer class="bottom-footer">
+				<div class="container">				
+					<div class="row">					
+						<div class="col-xs-12 col-sm-6 col-md-4">				
+							<p class="copy-right">&#169; 2017 Cyclone - Tour hosting</p>							
+						</div>
+						
+						<div class="col-xs-12 col-sm-6 col-md-4">
+							<ul class="bottom-footer-menu">
+								<li><a href="#">Cookies</a></li>
+								<li><a href="#">Policies</a></li>
+								<li><a href="#">Terms</a></li>
+								<li><a href="#">Blogs</a></li>
+							</ul>
+						</div>
+						
+						<div class="col-xs-12 col-sm-12 col-md-4">
+							<ul class="bottom-footer-menu for-social">
+								<li><a href="#"><i class="icon-social-twitter" data-toggle="tooltip" data-placement="top" title="twitter"></i></a></li>
+								<li><a href="#"><i class="icon-social-facebook" data-toggle="tooltip" data-placement="top" title="facebook"></i></a></li>
+								<li><a href="#"><i class="icon-social-google" data-toggle="tooltip" data-placement="top" title="google plus"></i></a></li>
+								<li><a href="#"><i class="icon-social-instagram" data-toggle="tooltip" data-placement="top" title="instrgram"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer><!-- end bottom footer -->
+		</div>
+		<!-- end Footer Wrapper -->
+		
+	</div> 
+	<!-- end Container Wrapper -->
+ 
+<!-- start Back To Top -->
+<div id="back-to-top">
+   <a href="#"><i class="ion-ios-arrow-up"></i></a>
+</div>
+<!-- end Back To Top -->
+
+
+<!-- start Sign-in Modal -->
+<div id="loginModal" class="modal fade login-box-wrapper" tabindex="-1" data-width="550" data-backdrop="static" data-keyboard="false" data-replace="true">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title text-center">Sign-in into your account</h4>
+	</div>
+	
+	<div class="modal-body">
+		<div class="row gap-20">
+		
+			<div class="col-sm-6 col-md-6">
+				<button class="btn btn-facebook btn-block mb-5-xs">Log-in with Facebook</button>
+			</div>
+			<div class="col-sm-6 col-md-6">
+				<button class="btn btn-google-plus btn-block">Log-in with Google+</button>
+			</div>
+			
+			<div class="col-md-12">
+				<div class="login-modal-or">
+					<div><span>or</span></div>
+				</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+	
+				<div class="form-group"> 
+					<label>Username</label>
+					<input class="form-control" placeholder="Min 4 and Max 10 characters" type="text"> 
+				</div>
+			
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+			
+				<div class="form-group"> 
+					<label>Password</label>
+					<input class="form-control" placeholder="Min 4 and Max 10 characters" type="text"> 
+				</div>
+			
+			</div>
+			
+			<div class="col-sm-6 col-md-6">
+				<div class="checkbox-block"> 
+					<input id="remember_me_checkbox" name="remember_me_checkbox" class="checkbox" value="First Choice" type="checkbox"> 
+					<label class="" for="remember_me_checkbox">Remember me</label>
+				</div>
+			</div>
+			
+			<div class="col-sm-6 col-md-6">
+				<div class="login-box-link-action">
+					<a data-toggle="modal" href="#forgotPasswordModal" class="block line18 mt-1">Forgot password?</a> 
+				</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+				<div class="login-box-box-action">
+					No account? <a data-toggle="modal" href="#registerModal">Register</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="modal-footer text-center">
+		<button type="button" class="btn btn-primary">Log-in</button>
+		<button type="button" data-dismiss="modal" class="btn btn-primary btn-border">Close</button>
+	</div>
+</div>
+<!-- end Sign-in Modal -->
+
+<!-- start Register Modal -->
+<div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" data-backdrop="static" data-keyboard="false" data-replace="true">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title text-center">Create your account for free</h4>
+	</div>
+	
+	<div class="modal-body">
+	
+		<div class="row gap-20">
+		
+			<div class="col-sm-6 col-md-6">
+				<button class="btn btn-facebook btn-block mb-5-xs">Register with Facebook</button>
+			</div>
+			<div class="col-sm-6 col-md-6">
+				<button class="btn btn-google-plus btn-block">Register with Google+</button>
+			</div>
+			
+			<div class="col-md-12">
+				<div class="login-modal-or">
+					<div><span>or</span></div>
+				</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+	
+				<div class="form-group"> 
+					<label>Username</label>
+					<input class="form-control" placeholder="Min 4 and Max 10 characters" type="text"> 
+				</div>
+			
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+	
+				<div class="form-group"> 
+					<label>Email Address</label>
+					<input class="form-control" placeholder="Enter your email address" type="text"> 
+				</div>
+			
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+			
+				<div class="form-group"> 
+					<label>Password</label>
+					<input class="form-control" placeholder="Min 8 and Max 20 characters" type="text"> 
+				</div>
+			
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+			
+				<div class="form-group"> 
+					<label>Password Confirmation</label>
+					<input class="form-control" placeholder="Re-type password again" type="text"> 
+				</div>
+			
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+				<div class="checkbox-block"> 
+					<input id="register_accept_checkbox" name="register_accept_checkbox" class="checkbox" value="First Choice" type="checkbox"> 
+					<label class="" for="register_accept_checkbox">By register, I read &amp; accept <a href="#">the terms</a></label>
+				</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+				<div class="login-box-box-action">
+					Already have account? <a data-toggle="modal" href="#loginModal">Log-in</a>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+	
+	<div class="modal-footer text-center">
+		<button type="button" class="btn btn-primary">Register</button>
+		<button type="button" data-dismiss="modal" class="btn btn-primary btn-border">Close</button>
+	</div>
+</div>
+<!-- end Register Modal -->
+
+<!-- start Forget Password Modal -->
+<div id="forgotPasswordModal" class="modal fade login-box-wrapper" tabindex="-1" data-backdrop="static" data-keyboard="false" data-replace="true">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title text-center">Restore your forgotten password</h4>
+	</div>
+	
+	<div class="modal-body">
+		<div class="row gap-20">
+			
+			<div class="col-sm-12 col-md-12">
+				<p class="mb-20">Maids table how learn drift but purse stand yet set. Music me house could among oh as their. Piqued our sister shy nature almost his wicket. Hand dear so we hour to.</p>
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+	
+				<div class="form-group"> 
+					<label>Email Address</label>
+					<input class="form-control" placeholder="Enter your email address" type="text"> 
+				</div>
+			
+			</div>
+
+			<div class="col-sm-12 col-md-12">
+				<div class="checkbox-block"> 
+					<input id="forgot_password_checkbox" name="forgot_password_checkbox" class="checkbox" value="First Choice" type="checkbox"> 
+					<label class="" for="forgot_password_checkbox">Generate new password</label>
+				</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-12">
+				<div class="login-box-box-action">
+					Return to <a data-toggle="modal" href="#loginModal">Log-in</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="modal-footer text-center">
+		<button type="button" class="btn btn-primary">Restore</button>
+		<button type="button" data-dismiss="modal" class="btn btn-primary btn-border">Close</button>
+	</div>
+</div>
+<!-- end Forget Password Modal -->
+ 
+<!-- Core JS -->
+<script src="{% static '/user/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static '/user/js/jquery-migrate-1.4.1.min.js' %}"></script>
+<script src="{% static '/user/js/core-plugins.js' %}"></script>
+<script src="{% static '/user/js/customs.js' %}"></script>
+
+<!-- Only in Home Page -->
+<script src="{% static '/user/js/jquery.flexdatalist.js' %}"></script>
+
+</body>
+
+</html>

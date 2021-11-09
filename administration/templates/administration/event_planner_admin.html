@@ -380,7 +380,7 @@ tr:nth-child(even) {
                             <ol class="breadcrumb">
 
                                 <table>
-  <tr>
+ <!--  <tr>
     <th>Breakfast</th>
     <th>Lunch</th>
     <th>Tea Time</th>
@@ -398,7 +398,7 @@ tr:nth-child(even) {
     <td></td>
 
 
-  </tr>
+  </tr> -->
 </table>
 
 
@@ -453,8 +453,8 @@ tr:nth-child(even) {
   <tr>
     <th>Place No</th>
     <th>Name</th>
-    <th>Start time</th>
-    <th>End Time</th>
+    <th>KM from Main location</th>
+    <!-- <th>End Time</th> -->
   
  
   </tr>
@@ -462,8 +462,8 @@ tr:nth-child(even) {
   <tr>
     <td>{{forloop.counter}}</td>
     <td>{{x.place}}</td>
-    <td>{{x.starttime}}</td>
-    <td>{{x.endtime}}</td>
+    <td>{{x.kilometers}}</td>
+    <!-- <td>{{x.endtime}}</td> -->
   </tr>
    {% endfor %}
  

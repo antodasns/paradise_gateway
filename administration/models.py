@@ -20,6 +20,21 @@ class place_details(models.Model):
 	kilometers=models.CharField(max_length=10)
 	kilometers_more=models.CharField(max_length=10)
 
+class package_booking(models.Model):
+	package_id=models.CharField(max_length=10)
+	user_id=models.CharField(max_length=10)
+
+class package_review(models.Model):
+	package_id=models.CharField(max_length=10)
+	user_id=models.CharField(max_length=10)
+	rating=models.CharField(max_length=30)
+	comment=models.TextField()
+
+class blog(models.Model):
+	package_id=models.CharField(max_length=10)
+	user_id=models.CharField(max_length=10)
+	pic=models.ImageField(upload_to='blogs/')
+	comment=models.TextField()
 
 class hotel_details(models.Model):
 	name=models.CharField(max_length=30)
@@ -98,3 +113,8 @@ class cab_rating(models.Model):
 class app_rating(models.Model):
 	rating=models.CharField(max_length=10)
 	review=models.TextField()
+
+class coupon(models.Model):
+	booking_id=models.CharField(max_length=10)
+	store_id=models.CharField(max_length=10)
+	status=models.CharField(max_length=10)

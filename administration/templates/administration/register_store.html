@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+
+<html lang="en-US">
+
+
+{% load static %}
+    
+<!-- Mirrored from eazzy.me/html/traveline/page-login-page-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Nov 2019 10:55:53 GMT -->
+<head>
+
+
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Traveline Booking</title>
+
+
+
+        <link rel="stylesheet" href="{% static 'inc/bootstrap/css/bootstrap.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'styles/themes/default/stylesheet.css' %}" />
+
+     
+
+        <link rel="alternate stylesheet" type="text/css"  title="02" href="{% static 'styles/themes/style02/stylesheet02.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="03" href="{% static 'styles/themes/style03/stylesheet03.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="04" href="{% static 'styles/themes/style04/stylesheet04.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="05" href="{% static 'styles/themes/style05/stylesheet05.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="06" href="{% static 'styles/themes/style06/stylesheet06.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="07" href="{% static 'styles/themes/style07/stylesheet07.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="08" href="{% static 'styles/themes/style08/stylesheet08.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="09" href="{% static 'styles/themes/style09/stylesheet09.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="10" href="{% static 'styles/themes/style10/stylesheet10.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="11" href="{% static 'styles/themes/style11/stylesheet11.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="12" href="{% static 'styles/themes/style12/stylesheet12.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="13" href="{% static 'styles/themes/style13/stylesheet13.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="14" href="{% static 'styles/themes/style14/stylesheet14.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="15" href="{% static 'styles/themes/style15/stylesheet15.css' %}" />
+
+        <script src="{% static 'inc/js/styleswitch.js" type="text/javascript">
+
+/***********************************************
+
+* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+
+* This notice MUST stay intact for legal use
+
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+
+***********************************************/
+
+</script>
+
+
+
+
+
+        <!-- Flexslider -->
+
+        <link rel="stylesheet" href="{% static 'styles/flexslider.css' %}" />
+
+
+
+        <!-- fontawesome -->
+
+        <link rel="stylesheet" href="{% static 'styles/fontawesome/font-awesome.min.css' %}" />
+
+
+
+        <!-- Datepicker UI -->
+
+        <link rel="stylesheet" href="{% static 'styles/jquery-ui-1.10.3.custom.min.css' %}" />
+
+
+
+        <!-- MI slider -->
+
+        <link rel="stylesheet" href="{% static 'styles/mi-slider.css' %}" />	
+
+
+
+        <!-- Chozen UI -->
+
+        <link rel="stylesheet" href="{% static 'styles/chosen.css' %}" />	
+
+
+
+        <!-- Range Slider UI #2 -->
+
+        <link rel="stylesheet" href="{% static 'styles/rangeslider-classic.css' %}" />
+
+
+
+        <!-- Elegant Font -->
+
+        <link rel="stylesheet" href="{% static 'inc/elegant-font/style.css' %}" />
+
+        <!--[if lte IE 7]><script src="inc/elegant-font/lte-ie7.js"></script><![endif]-->
+
+
+
+     <link rel="stylesheet" href="{% static 'demo/switcher.css' %}" />
+
+    </head>
+
+    <body class="login-page-bg">
+
+
+
+<div id="preloader">
+
+    <div id="status">&nbsp;</div>
+
+    <noscript>JavaScript is off. Please enable to view full site.</noscript>
+
+</div>
+
+        <div id="site">
+
+
+
+
+
+            <!-- /#header -->
+ <section id="more-pages" class="section wide-fat">
+                <div class="container">
+                <div class="login-wrapper">
+
+                    <div class='content-holder'>
+                        <div class="branding">
+                            
+                        </div>
+
+                        <h1>Welcome</h1>
+                        <p>Please register to start using.</p>
+                        <form action="{% url 'administration:registration'%}" method="post">
+                                 {% csrf_token %}
+                                 
+                            <div class=" field-row">
+                                <!-- <input type="text" placeholder="First Name" name="firstname">
+                                <input class="margin-top-10" type="text" placeholder="Lastname" name="lastname">
+                                <input class="margin-top-10" type="E-mail" placeholder="E-mail" name="email">
+                                <input class="margin-top-10" type="password" placeholder="Password" name="password"> -->
+{{form.username}}
+                             {{form.email}}
+                              {{form.password}}
+                               {{form.confirm_password}}
+          {{ form.password.errors }}
+           {{ form.non_field_errors }} 
+                                
+                            </div><br>
+                            <button type="submit" class="button green btn-block">Register</button>
+                        </form><br>
+                        
+                            <button onclick="window.location.href = '../'" class="button green btn-block" >Login</button>
+
+
+
+                    </div>
+
+
+                </div>
+                </div>
+            </section><!-- /#more-pages.section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+
+		<!-- /#footer -->
+
+
+
+
+
+
+
+
+
+        </div><!-- /#site -->
+
+
+
+
+
+<!-- Scripts -->
+
+	
+
+	<!-- jQuery -->
+
+	
+
+      
+
+        <script src="{% static 'inc/js/jquery-1.10.2.min.js' %}"></script>
+
+        <script src="{% static 'inc/js/jquery-migrate-1.2.1.js' %}"></script>
+
+	
+
+	<!-- modernizer -->
+
+	
+
+      
+
+        <script src="{% static 'inc/js/modernizr.custom.63321.js' %}"></script>
+
+	
+
+	<!-- FlexSlider -->
+
+	<script type="text/javascript" src="{% static 'inc/js/jquery.flexslider-min.js' %}"></script>	
+
+	
+
+	
+
+	<!-- CatSlider -->
+
+	<script type="text/javascript" src="{% static 'inc/js/jquery.catslider.js' %}"></script>	
+
+
+
+	
+
+	<!-- Datepicker -->
+
+	<script type="text/javascript" src="{% static 'inc/js/jquery.ui.datepicker.min.js' %}"></script>	
+
+	
+
+	
+
+	<!-- Masonry -->
+
+	<script type="text/javascript" src="{% static 'inc/js/masonry.min.js' %}"></script>	
+
+
+
+	
+
+	
+
+	<!-- Increase/decrease quantity -->
+
+	<script type="text/javascript" src="{% static 'inc/js/increase-decrease-qty.js' %}"></script>	
+
+	
+
+	<!-- Mixitup (filterable item) -->
+
+	<script type="text/javascript" src="{% static 'inc/js/jquery.mixitup.min.js' %}"></script>	
+
+	
+
+	
+
+	<!-- Google Map JS -->
+
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+
+	<script type="text/javascript" src="{% static 'inc/js/google-map-infobox.js' %}"></script>		
+
+		
+
+	
+
+	<!-- Responsive Google Map (Fitmaps) JS -->
+
+	<script type="text/javascript" src="{% static 'inc/js/jquery.fitmaps.js"></script>	
+
+	
+
+	<!-- Chozen UI JS -->
+
+	<script type="text/javascript" src="{% static 'inc/js/chosen.jquery.js' %}"></script>	
+
+			
+
+	
+
+	<!-- Checkbox/Radio UI JS -->
+
+	<script type="text/javascript" src="{% static 'inc/js/jquery.screwdefaultbuttonsV2.js' %}"></script>	
+
+		
+
+	
+
+	<!-- Range Slider UI JS #2 -->
+
+	<script type="text/javascript" src="{% static 'inc/js/jquery.mousewheel.min.js' %}"></script>	
+
+	<script type="text/javascript" src="{% static 'inc/js/jQRangeSlider-min.js' %}"></script>	
+
+	<!-- bootstrap JS -->
+
+        <script type="text/javascript" src="{% static 'inc/bootstrap/js/bootstrap.min.js' %}"></script>		
+
+	<!-- raty JS -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.raty.min.js' %}"></script>
+
+	<!-- Custom JS -->
+
+	<script type="text/javascript" src="{% static 'inc/js/custom.js' %}"></script>	
+
+	
+
+
+
+    </body>
+
+
+
+</html>

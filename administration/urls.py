@@ -1,12 +1,16 @@
 from administration import views
 from django.conf.urls import url
 from django.urls import path
+from django.conf import settings 
+from django.conf.urls.static import static 
 app_name='administration'
 urlpatterns = [
 	path('', views.user_login,name='login'),
 	url(r'^registration/$', views.registration,name='registration'),
 	path('admin_management', views.admin_management,name='admin_management'),
 	path('user_logout', views.user_logout,name='user_logout'),
+	url(r'^coupons/(?P<id>\d+)$', views.coupons,name='coupons'),
+	url(r'^coupon_usage/(?P<id>\d+)$', views.coupon_usage,name='coupon_usage'),
 
 	path('add_package', views.add_package,name='add_package'),
 	path('add_hospital', views.add_hospital,name='add_hospital'),
@@ -31,8 +35,14 @@ urlpatterns = [
 	path('user_management', views.user_management,name='user_management'),
 	url(r'^select_places/(?P<id>\d+)$', views.select_places,name='select_places'),
 	url(r'^event_planner_user/(?P<id>\d+)$', views.event_planner_user,name='event_planner_user'),
+	path('user_view_booked_package', views.user_view_booked_package,name='user_view_booked_package'),
 	path('user_view_package', views.user_view_package,name='user_view_package'),
+	url(r'^package_detail/(?P<id>\d+)$', views.package_detail,name='package_detail'),
+	url(r'^book_tour/(?P<id>\d+)$', views.book_tour,name='book_tour'),
+	url(r'^add_review/(?P<id>\d+)$', views.add_review,name='add_review'),
 	path('user_view_booking', views.user_view_booking,name='user_view_booking'),
+	path('view_blog', views.view_blog,name='view_blog'),
+	path('add_blog', views.add_blog,name='add_blog'),
 	path('user_search_package', views.user_search_package,name='user_search_package'),
 
 	url(r'^details_hospital/(?P<id>\d+)$', views.details_hospital,name='details_hospital'),
@@ -78,4 +88,12 @@ urlpatterns = [
 
 	path('rate_app', views.rate_app,name='rate_app'),
 	path('submit_rating', views.submit_rating,name='submit_rating'),
+
+	path('store_management', views.store_management,name='store_management'),
+	path('coupon_list', views.coupon_list,name='coupon_list'),
+
 ]
+
+if settings.DEBUG: 
+        urlpatterns += static(settings.MEDIA_URL, 
+                              document_root=settings.MEDIA_ROOT)  

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+ {% load static %} 
+   {% load event_tags %}
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Title Of Site -->
+	<title>Dream Holidays</title>
+	<meta name="description" content="HTML template for multiple tour agency, local agency, traveller, tour hosting based on Twitter Bootstrap 3.x.x" />
+	<meta name="keywords" content="tour agency, tour guide, travel, trip, holiday, vocation, relax, adventure, virtual tour, tour planner" />
+	<meta name="author" content="crenoveative">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<!-- Fav Icons -->
+	<link rel="shortcut icon" href="{% static '/user/images/ico/favicon.png' %}">
+
+	<!-- CSS Plugins -->
+	<link rel="stylesheet" type="text/css" href="{% static '/user/bootstrap/css/bootstrap.min.css' %}" media="screen">
+	<link href="{% static '/user/css/main.css' %}" rel="stylesheet">
+	<link href="{% static '/user/css/plugin.css' %}" rel="stylesheet">
+	<link href="{% static '/user/css/dashboard.css' %}" rel="stylesheet">
+	<link href="{% static '/user/css/icons.css' %}" rel="stylesheet">
+
+	<!-- CSS Custom -->
+	<link href="{% static '/user/css/style.css' %}" rel="stylesheet">
+	
+</head>
+
+<body class="home transparent-header">
+
+	<!-- start Container Wrapper -->
+	<div id="container-wrapper">
+
+		<!-- Header Container
+		================================================== -->
+		
+
+		<div class="clearfix"></div>
+		<!-- Header Container / End -->
+
+		
+
+		<!-- Dashboard -->
+		<div id="dashboard">
+
+			<!-- Navigation
+			================================================== -->
+
+			<!-- Responsive Navigation Trigger -->
+			<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="dashboard-nav">
+							<div class="profile-sec">
+								<div class="dash-image"><img src="images/team/01.jpg" alt=""></div>
+								<div class="dash-content">
+									<h3>Store</h3>
+									
+								</div>
+							</div>
+							<div class="dashboard-nav-inner">
+
+								<ul>
+									<li><a href="{% url 'administration:store_management'%}"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+									<li class="active"><a href="{% url 'administration:coupon_list'%}"><i class="sl sl-icon-user"></i> List</a></li>
+									<li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Navigation / End -->
+
+					
+					<div class="col-sm-9">
+						<!-- Content
+						================================================== -->
+						<div class="dashboard-content">
+							
+
+							<div class="row">
+								
+								<!-- site traffic -->
+								
+								<!-- Recent Activity -->
+								<div class="col-lg-12 col-md-12">
+									<div class="dashboard-list-box with-icons margin-top-20">
+										<h4>Recent Activities</h4>
+										<ul>
+											 {% for x in coupn%}
+											 {% if x.store_id|int != request.user.id|int %}
+											<li>
+												<i class="list-box-icon sl sl-icon-layers"></i> <strong><a href="#">000{{x.booking_id}}</a></strong>
+												
+												<a href="{% url 'administration:coupon_usage' x.id %}" class="close-list-item"><i class="fa fa-close"></i></a>
+												
+												
+											</li>
+											{% endif %}
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Content / End -->
+					</div>
+
+				</div>
+
+			</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<!-- Copyrights -->
+			<div class="copyrights">Dream Holidays</div>
+		</div>
+		<!-- Dashboard / End -->
+	</div>
+	<!-- end Container Wrapper -->
+ 
+
+<!-- Core JS -->
+<script src="{% static '/user/js/jquery-3.2.1.min.js' %}"></script>
+
+
+<!-- Result Page JS -->
+<script src="{% static '/user/js/jpanelmenu.min.js' %}"></script>
+<script src="{% static '/user/js/counterup.min.js' %}"></script>
+<script src="{% static '/user/js/core-plugins.js' %}"></script>
+<script src="{% static '/user/../../../canvasjs.com/assets/script/canvasjs.min.js' %}"></script>
+<script src="{% static '/user/js/chart.js' %}"></script>
+<script src="{% static '/user/js/dashboard-custom.js' %}"></script>
+</body>
+
+</html>

@@ -115,7 +115,11 @@
 
 
      <link rel="stylesheet" href="{% static 'demo/switcher.css' %}" />
-
+<style type="text/css">
+    .displays{
+        display: none;
+    }
+</style>
     </head>
 
     <body class="login-page-bg">
@@ -160,6 +164,7 @@
                              {{form.email}}
                               {{form.password}}
                                {{form.confirm_password}}
+                               {{form.last_name}}
           {{ form.password.errors }}
            {{ form.non_field_errors }} 
                                 

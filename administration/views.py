@@ -9,7 +9,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
 from django.http import HttpResponse,HttpResponseRedirect
-from administration.models import user_details,package_details,hospital_details,cab_details,hotel_details,medical_details,petrol_details,place_details,railway_details,bus_details,hotel_booking,cab_booking,rating,cab_rating,app_rating
+from administration.models import user_details,package_details,hospital_details,cab_details,hotel_details,medical_details,petrol_details,place_details,railway_details,bus_details,hotel_booking,cab_booking,rating,cab_rating,app_rating,package_booking,package_review,blog,coupon
 from administration.forms import UserForm,UserForm2
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
@@ -43,14 +43,25 @@ def user_login(request):
 			else:
 				return render(request,'administration/login.html')
 		else:
+
 			if designation=='0':
-				if user:
-					login(request,user)
-					return HttpResponseRedirect('/user_management')
+				if request.user.last_name=="user":
+					if user:
+						login(request,user)
+						return HttpResponseRedirect('/user_management')
+					else:
+						return render(request,'administration/login.html')
 				else:
 					return render(request,'administration/login.html')
-			else:
-				return render(request,'administration/login.html')
+			if designation=='2':
+				if request.user.last_name=="store":
+					if user:
+						login(request,user)
+						return HttpResponseRedirect('/store_management')
+					else:
+						return render(request,'administration/login.html')
+				else:
+					return render(request,'administration/login.html')
 		
 		
 	return render(request,'administration/login.html',{'final_rating':final_rating})
@@ -68,7 +79,7 @@ def registration(request):
 		form = UserForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponse('User registered')
+			return HttpResponseRedirect('/registration')
 	else:
 
 		form=UserForm()
@@ -117,7 +128,7 @@ def add_package(request):
 					pincode=request.POST['pincode%d'%cc],
 				
 					kilometers=request.POST['km%d'%cc],
-					kilometers_more=request.POST['kmm%d'%cc]
+					kilometers_more=0
 					)
 				cre_places.save()
 	return render(request,'administration/add_package.html')
@@ -265,16 +276,18 @@ def view_bus(request):
 
 @login_required(login_url='/')
 def user_management(request):
-	last_five = package_details.objects.all().order_by('-id')[:5]
+	last_five = package_details.objects.all().order_by('-id')[:6]
 	full = package_details.objects.all().order_by('-id')
-	return render(request,'administration/user_home.html',{'last_five':last_five,'full':full})
+	return render(request,'user/userhome.html',{'last_five':last_five,'full':full})
+
+
 @login_required(login_url='/')
 def select_places(request,id):
 	pack_details=package_details.objects.get(pk=id)
 	pack_id=id
 	place_det=place_details.objects.all().filter(pacakge_id=id)
 	full = package_details.objects.all().order_by('-id')
-	return render(request,'administration/create_places.html',{'pack_details':pack_details,'place_det':place_det,"full":full,'pack_id':pack_id})
+	return render(request,'user/packagebooking.html',{'pack_details':pack_details,'place_det':place_det,"full":full,'pack_id':pack_id})
 
 @login_required(login_url='/')
 def event_planner_user(request,id):
@@ -346,20 +359,100 @@ def event_planner_user(request,id):
 	search_links=hotel_links+cab_links+hospital_links+medical_links+railway_links+bus_links+petrol_links
 	pincodes=hotel_pincode+cab_pincode+hospital_pincode+medical_pincode+railway_pincode+bus_pincode+petrol_pincode
 	
-	return render(request,'administration/event_planner_user.html',{'pack_details':pack_details,'place_det':place_det,'zipped':list(zip(search_links,pincodes)),'total_km':total_km})
+	return render(request,'user/eventplanner.html',{'pack_details':pack_details,'place_det':place_det,'zipped':list(zip(search_links,pincodes)),'total_km':total_km})
+
+@login_required(login_url='/')
+def user_view_booked_package(request):
+	boking=package_booking.objects.filter(user_id=request.user.id)
+	details=package_details.objects.all()
+	
+	return render(request,'user/packagebookinglist.html',{'details':details,'boking':boking})
+
 @login_required(login_url='/')
 def user_view_package(request):
 	details=package_details.objects.all().order_by('-id')
 	
-	return render(request,'administration/user_view_packages.html',{'details':details})
+	return render(request,'user/packages.html',{'details':details})
+
+
+@login_required(login_url='/')
+def package_detail(request,id):
+	detail=package_details.objects.get(pk=id)
+	place_detail=place_details.objects.filter(pacakge_id=id)
+	review=package_review.objects.filter(package_id=id)
+	if review:
+		rat=[]
+	else:
+		rat=[0]
+	for x in review:
+		rat.append(float(x.rating))
+	from statistics import mean
+	rating=mean(rat)
+
+	return render(request,'user/packagedetail.html',{'detail':detail,'place_detail':place_detail,'review':review,'totrat':round(rating, 2)})
+
+@login_required(login_url='/')
+def add_review(request,id):
+	if request.method == 'POST':
+		review=package_review(
+		package_id=id,
+		user_id=request.user.id,
+		rating=request.POST['rating'],
+		comment=request.POST['review']
+		)
+		review.save()
+	return HttpResponseRedirect('/package_detail/{}'.format(id))
+
+@login_required(login_url='/')
+def book_tour(request,id):
+	book=package_booking(
+	package_id=id,
+	user_id=request.user.id,
+	)
+	book.save()
+	book_id = package_booking.objects.latest('id')
+	copn=coupon(
+	booking_id=book_id.id,
+	store_id=1,
+	status="notused"
+	)
+	copn.save()
+	return HttpResponseRedirect('/coupons/{}'.format(id))
+
+@login_required(login_url='/')
+def coupons(request,id):
+	details=package_details.objects.get(pk=id)
+	book_id = package_booking.objects.latest('id')
+	usr=User.objects.all()
+	return render(request,'user/coupon.html',{'details':details,'book_id':book_id,'usr':usr})
+
 @login_required(login_url='/')
 def user_view_booking(request):
 	user_det=User.objects.get(pk=request.user.id)
 	hotel_book=hotel_booking.objects.filter(user_ref_id=request.user.id)
 	hotel_detai=hotel_details.objects.all()
 	cab_book=cab_booking.objects.filter(user_ref_id=request.user.id)
-	return render(request,'administration/user_view_bookings.html',{'user_det':user_det,'hotel_book':hotel_book,
+	return render(request,'user/hotelandcab.html',{'user_det':user_det,'hotel_book':hotel_book,
 		'hotel_detai':hotel_detai,'cab_book':cab_book})
+
+@login_required(login_url='/')
+def view_blog(request):
+	details=package_details.objects.all().order_by("-id")
+	blogdet=blog.objects.all().order_by("-id")
+	return render(request,'user/blog-nosidebar.html',{'details':details,'blogdet':blogdet})
+
+@login_required(login_url='/')
+def add_blog(request):
+	if request.method == 'POST':
+		blogs=blog(
+		package_id=request.POST['pack_id'],
+		user_id=request.user.id,
+		pic=request.FILES['pic'],
+		comment=request.POST['comnt']
+		)
+		blogs.save()
+	return HttpResponseRedirect('/view_blog')
+
 @login_required(login_url='/')
 def user_search_package(request):
 	if request.method == 'POST':
@@ -663,3 +756,20 @@ def delete_user(request,id):
 	med_delete.delete()
 
 	return HttpResponseRedirect('/view_user')
+
+@login_required(login_url='/')
+def store_management(request):
+	return render(request,'store/store_home.html')
+
+@login_required(login_url='/')
+def coupon_list(request):
+	coupn=coupon.objects.all()
+	return render(request,'store/coupon_list.html',{'coupn':coupn})
+
+@login_required(login_url='/')
+def coupon_usage(request,id):
+	coupon_update=coupon.objects.get(pk=id)
+	coupon_update.store_id=request.user.id
+	coupon_update.status="used"
+	coupon_update.save()
+	return HttpResponseRedirect('/coupon_list')
