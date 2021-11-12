@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Title Of Site -->
-	<title>Cyclone Tour - Tour hosting</title>
+	<title>Dream Holidays</title>
 	<meta name="description" content="HTML template for multiple tour agency, local agency, traveller, tour hosting based on Twitter Bootstrap 3.x.x" />
 	<meta name="keywords" content="tour agency, tour guide, travel, trip, holiday, vocation, relax, adventure, virtual tour, tour planner" />
 	<meta name="author" content="crenoveative">
@@ -63,6 +63,7 @@
 
 			<!-- start Navbar (Header) -->
 			<nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function navbar-arrow">
+
 				<div class="container">
 
 					<div class="logo pull-left">
@@ -74,84 +75,26 @@
 						<ul class="nav navbar-nav" id="responsive-menu">
 						
 							<li>
-								<a href="index.html">Home</a>
-								<ul>
-									<li><a href="index.html">Home Style 1</a></li>
-									<li><a href="index-02.html">Home Style 2</a></li>
-									<li><a href="index-03.html">Home Style 3</a></li>
-									<li><a href="index-cursor.html">Home Image</a></li>
-									<li><a href="index-video.html">Self Hosted Video</a></li>
-								</ul>
+								<a href="{% url 'administration:user_management' %}">Home</a>
+								
 							</li>
 							
 							<li class="active">
-								<a href="#">Pages</a>
-								<ul>
-									<li><a href="experiences.html">Tour Listing</a>
-										<ul>
-											<li><a href="experiences.html">Four Columns</a></li>
-											<li><a href="experiences-1.html">Three Columns</a></li>
-											<li><a href="experiences-2.html">Four Columns</a></li>
-											<li><a href="category.html">Tour Category</a></li>
-										</ul>
-									</li>
-									<li><a href="experiences-detail.html">Tour Detail</a>
-										<ul>
-											<li><a href="experiences-detail.html">Detail One</a></li>
-											<li><a href="experiences-detail-1.html">Detail Two</a></li>
-										</ul>
-									</li>
-									<li><a href="services.html">Services</a></li>
-									<li><a href="payment.html">Payment</a></li>
-									<li><a href="confirmation.html">Confimation</a></li>
-									<li><a href="cities.html">Cities</a>
-										<ul>
-											<li><a href="cities.html">Cities Style 1</a></li>
-											<li><a href="cities-1.html">Cities Style 2</a></li>
-											<li><a href="cities-2.html">Cities Style 3</a></li>
-										</ul>
-									</li>
-									<li><a href="price-list.html">price List</a></li>
-									<li><a href="sign-in.html">Sign In</a></li>
-									<li><a href="sign-up.html">Sign Up</a></li>
-									<li><a href="coming-soon.html">Coming Soon</a></li>
-									<li><a href="404-error-page.html">404 error</a></li>
-								</ul>
+								<a href="{% url 'administration:user_view_package' %}">Packages</a>
+								
 							</li>
-							<li><a href="dashboard.html">Dashboard</a>
+							<li><a href="#">Bookings</a>
 								<ul>
-									<li><a href="dashboard-my-profile.html">Edit Profile</a></li>
-									<li><a href="dashboard-addtour.html">Add Tour</a></li>
-									<li><a href="dashboard-changepassword.html">Change Password</a></li>
-									<li><a href="dashboard-information.html">information</a></li>
-									<li><a href="dashboard-list.html">Tour List</a></li>
-									<li><a href="dashboard-history.html">History</a></li>
-									<li><a href="dashboard-wishlist-1.html">Wishlists</a></li>
-									<li><a href="dashboard-reviews.html">Reviews</a></li>
-								</ul>
-							</li>
-							<li><a href="about-us.html">About Us</a>
-								<ul>
-									<li><a href="about-us.html">About us</a></li>
-									<li><a href="about-us-1.html">About us 1</a></li>
+									<li><a href="{% url 'administration:user_view_booked_package' %}">Package</a></li>
+									<li><a href="{% url 'administration:user_view_booking' %}">Hotels and Cabs</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="blog-right.html">Blog</a>
-								<ul>
-									<li><a href="blog-left.html">Blog Left Sidebar</a></li>
-									<li><a href="blog-right.html">Blog Right Sidebar</a></li>
-									<li><a href="blog-nosidebar.html">Blog No Sidebar</a></li>
-									<li><a href="blog-single.html">Blog detail</a></li>
-								</ul>
+								<a href="{% url 'administration:view_blog' %}">Blog</a>
+								
 							</li>
-							<li><a href="contact-us.html">Contact Us</a>
-								<ul>
-									<li><a href="contact-us.html">Contact us</a></li>
-									<li><a href="contact-us-1.html">Contact us 1</a></li>
-								</ul>
+							<li><a href="about-us.html">About Us</a>
 							</li>
-							
 						</ul>
 				
 					</div><!--/.nav-collapse -->

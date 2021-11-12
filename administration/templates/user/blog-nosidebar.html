@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Title Of Site -->
-	<title>Cyclone Tour - Tour hosting</title>
+	<title>Dream Holidays</title>
 	<meta name="description" content="HTML template for multiple tour agency, local agency, traveller, tour hosting based on Twitter Bootstrap 3.x.x" />
 	<meta name="keywords" content="tour agency, tour guide, travel, trip, holiday, vocation, relax, adventure, virtual tour, tour planner" />
 	<meta name="author" content="cyclonetour">
@@ -28,7 +28,9 @@
 	
 	<!-- Add your style -->
 	<link href="{% static '/user/css/your-style.css' %}" rel="stylesheet">
-	
+	<style type="text/css">
+		#map{ width:700px; height: 500px; }
+	  </style>
 </head>
 
 <body class="home transparent-header">
@@ -53,23 +55,23 @@
 					
 						<ul class="nav navbar-nav" id="responsive-menu">
 						
-							<li class="active">
-								<a href="index.html">Home</a>
+							<li>
+								<a href="{% url 'administration:user_management' %}">Home</a>
 								
 							</li>
 							
 							<li>
-								<a href="packages.html">Packages</a>
+								<a href="{% url 'administration:user_view_package' %}">Packages</a>
 								
 							</li>
 							<li><a href="#">Bookings</a>
 								<ul>
-									<li><a href="packagebooking.html">Package</a></li>
-									<li><a href="hotelandcab.html">Hotels and Cabs</a></li>
+									<li><a href="{% url 'administration:user_view_booked_package' %}">Package</a></li>
+									<li><a href="{% url 'administration:user_view_booking' %}">Hotels and Cabs</a></li>
 								</ul>
 							</li>
-							<li>
-								<a href="blog-nosidebar.html">Blog</a>
+							<li  class="active">
+								<a href="{% url 'administration:view_blog' %}">Blog</a>
 								
 							</li>
 							<li><a href="about-us.html">About Us</a>
@@ -171,6 +173,19 @@
 												</div>
 											
 											</div>
+											<div class="col-xs-12 col-sm-4 col-md-4">
+											
+												<div class="form-group">
+													<label>Place: </label>
+													<div class="rating-wrapper mt-5">
+														<div class="rating-item">
+															
+															<input type="text" name="place" value="">
+														</div>
+													</div>
+												</div>
+											
+											</div>
 
 											<div class="col-xs-12 col-sm-4 col-md-4">
 											
@@ -199,9 +214,15 @@
 													<textarea class="form-control form-control-sm" rows="5" name="comnt"></textarea>
 												</div>
 											</div>
-											
+											<div class="col-sm-12 col-md-12">
+												<div id="map"></div>
+												<input style="display: none;" type="text" id="lat" readonly="yes" name="lat"><br>
+												<input style="display: none;" type="text" id="lng" readonly="yes" name="log">
+												
+											</div>
+										
 											<div class="clear mb-5"></div>
-											
+											</br>
 											<div class="col-sm-12 col-md-8">
 												
 												<input type="submit" name="" class="btn btn-primary btn-lg">
@@ -532,6 +553,7 @@
 <script src="{% static '/user/js/customs.js' %}"></script>
 
 <!-- Detail Page JS -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="{% static '/user/js/jquery.stickit.js' %}"></script>
 <script src="{% static '/user/js/bootstrap-tokenfield.js' %}"></script>
 <script src="{% static '/user/js/typeahead.bundle.min.js' %}"></script>
@@ -540,7 +562,7 @@
 <script src="{% static '/user/js/jquery.bootstrap-touchspin.js' %}"></script>
 <script src="{% static '/user/js/slick-lightbox.min.js' %}"></script>
 <script src="{% static '/user/js/customs-detail.js' %}"></script>
-
+<script src="{% static '/user/js/map.js' %}"></script>
 <script src="{% static '/user/js/moment.min.js' %}"></script>
 <script src="{% static '/user/js/jquery.daterangepicker.js' %}"></script>
 <script src="{% static '/user/js/customs-datepicker.js' %}"></script>

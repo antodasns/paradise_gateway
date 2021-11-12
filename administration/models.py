@@ -33,8 +33,11 @@ class package_review(models.Model):
 class blog(models.Model):
 	package_id=models.CharField(max_length=10)
 	user_id=models.CharField(max_length=10)
+	place=models.CharField(max_length=30)
+	location=models.TextField()
 	pic=models.ImageField(upload_to='blogs/')
 	comment=models.TextField()
+	status=models.CharField(max_length=15)
 
 class hotel_details(models.Model):
 	name=models.CharField(max_length=30)

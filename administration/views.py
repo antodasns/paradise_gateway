@@ -13,6 +13,8 @@ from administration.models import user_details,package_details,hospital_details,
 from administration.forms import UserForm,UserForm2
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
+import pickle
+import pandas as pd
 
 # Create your views here.
 def user_login(request):
@@ -132,6 +134,69 @@ def add_package(request):
 					)
 				cre_places.save()
 	return render(request,'administration/add_package.html')
+
+@login_required(login_url='/')
+def recomendation(request):
+	blogs=blog.objects.filter(status="pending")
+	place=[]
+	comment=[]
+	package_id=[]
+	location=[]
+	sentiment=[]
+	for x in blogs:	
+		place.append(x.place)
+		comment.append(x.comment)
+		package_id.append(x.package_id)
+		location.append(x.location)
+	model = pickle.load(open("tourmodel", 'rb'))
+	for y in comment:
+		result = model.predict([y])
+		if result==["not happy"]:
+			sentiment.append(0)
+		else:
+			sentiment.append(1)
+
+	df= pd.DataFrame({"place": place,"comment": comment,"sentiment":sentiment,"package_id":package_id,"location":location})
+	result = df.groupby(['place','package_id','location'], as_index=False).agg({'sentiment': 'sum'})
+	result['count'] = df.groupby('place')['place'].transform('count')
+	result = result[result['sentiment'] >=5]  
+	result['avg'] = result['sentiment']/result['count']
+	result=result[result['avg'] >=.5]  
+
+	rc_place=[]
+	rc_package_id=[]
+	rc_package_name=[]
+	rc_location=[]
+	# package_details.objects.values_list('package_name', flat=True).get(pk=id)
+	print(result)
+	for x,y,z in zip(result['place'],result['package_id'],result['location']):
+		rc_place.append(x)
+		rc_package_id.append(y)
+		rc_package_name.append(package_details.objects.values_list('package_name', flat=True).get(pk=y))
+		rc_location.append(z)
+	recom=zip(rc_place,rc_package_id,rc_package_name,rc_location)
+	return render(request,'administration/recomendation.html',{"recom":recom})
+
+@login_required(login_url='/')
+def add_recomendation(request):
+	if request.method == 'POST':
+		cre_places=place_details(
+			pacakge_id=request.POST['pacakge_id'],
+			place=request.POST['place'],
+			location=request.POST['location'],
+			pincode=request.POST['pincode'],
+			kilometers=request.POST['kilometer'],
+			kilometers_more=0
+			)
+		cre_places.save()
+		blog.objects.filter(place=request.POST['place']).update(status="done")
+	return HttpResponseRedirect('/admin_management')
+@login_required(login_url='/')
+def delete_recomendation(request):
+	if request.method == 'POST':
+		blog.objects.filter(place=request.POST['place']).update(status="done")
+	return HttpResponseRedirect('/admin_management')
+
 @login_required(login_url='/')
 def add_hospital(request):
 	if request.method == 'POST':
@@ -146,6 +211,7 @@ def add_hospital(request):
 	return render(request,'administration/add_hospital.html')
 @login_required(login_url='/')
 def add_hotels(request):
+	form=UserForm()
 	if request.method == 'POST':
 		
 		cre_hotel=hotel_details(
@@ -155,7 +221,16 @@ def add_hotels(request):
 			roomsavailable=request.POST['roomsavailable'],
 			)
 		cre_hotel.save()
-	return render(request,'administration/add_hotels.html')
+		form = UserForm(request.POST)
+		if form.is_valid():
+			form.save()
+			usr=User.objects.latest('id')
+			User.objects.get(id=usr.id).update(last_name="store")
+			return HttpResponseRedirect('/admin_management')
+		else:
+			form=UserForm()
+		
+	return render(request,'administration/add_hotels.html',{'form':form})
 @login_required(login_url='/')
 def add_medical(request):
 	if request.method == 'POST':
@@ -444,13 +519,34 @@ def view_blog(request):
 @login_required(login_url='/')
 def add_blog(request):
 	if request.method == 'POST':
-		blogs=blog(
-		package_id=request.POST['pack_id'],
-		user_id=request.user.id,
-		pic=request.FILES['pic'],
-		comment=request.POST['comnt']
-		)
-		blogs.save()
+		lat=request.POST['lat']
+		log=request.POST['log']
+		location="http://maps.google.com/?q={},{}".format(lat,log)
+		blogs=blog.objects.filter(place=request.POST['place'],status="done")
+
+		if not blogs:
+			blogs=blog(
+			package_id=request.POST['pack_id'],
+			user_id=request.user.id,
+			pic=request.FILES['pic'],
+			place=request.POST['place'],
+			location=location,
+			comment=request.POST['comnt'],
+			status="pending"
+			)
+			blogs.save()
+			blog.objects.filter(place=request.POST['place']).update(location=location)
+		else:
+			blogs=blog(
+			package_id=request.POST['pack_id'],
+			user_id=request.user.id,
+			pic=request.FILES['pic'],
+			place=request.POST['place'],
+			location=location,
+			comment=request.POST['comnt'],
+			status="done"
+			)
+			blogs.save()
 	return HttpResponseRedirect('/view_blog')
 
 @login_required(login_url='/')

@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Title Of Site -->
-	<title>Cyclone Tour - Tour hosting</title>
+	<title>Dream Holidays</title>
 	<meta name="description" content="HTML template for multiple tour agency, local agency, traveller, tour hosting based on Twitter Bootstrap 3.x.x" />
 	<meta name="keywords" content="tour agency, tour guide, travel, trip, holiday, vocation, relax, adventure, virtual tour, tour planner" />
 	<meta name="author" content="cyclonetour">
@@ -51,23 +51,23 @@
 					
 						<ul class="nav navbar-nav" id="responsive-menu">
 						
-							<li class="active">
-								<a href="index.html">Home</a>
+							<li>
+								<a href="{% url 'administration:user_management' %}">Home</a>
 								
 							</li>
 							
 							<li>
-								<a href="packages.html">Packages</a>
+								<a href="{% url 'administration:user_view_package' %}">Packages</a>
 								
 							</li>
 							<li><a href="#">Bookings</a>
 								<ul>
-									<li><a href="packagebooking.html">Package</a></li>
-									<li><a href="hotelandcab.html">Hotels and Cabs</a></li>
+									<li><a href="{% url 'administration:user_view_booked_package' %}">Package</a></li>
+									<li class="active"><a href="{% url 'administration:user_view_booking' %}">Hotels and Cabs</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="blog-nosidebar.html">Blog</a>
+								<a href="{% url 'administration:view_blog' %}">Blog</a>
 								
 							</li>
 							<li><a href="about-us.html">About Us</a>

@@ -13,6 +13,9 @@ urlpatterns = [
 	url(r'^coupon_usage/(?P<id>\d+)$', views.coupon_usage,name='coupon_usage'),
 
 	path('add_package', views.add_package,name='add_package'),
+	path('recomendation', views.recomendation,name='recomendation'),
+	path('add_recomendation', views.add_recomendation, name='add_recomendation'),
+	path('delete_recomendation', views.delete_recomendation, name='delete_recomendation'),
 	path('add_hospital', views.add_hospital,name='add_hospital'),
 	path('add_hotels', views.add_hotels,name='add_hotels'),
 	path('add_medical', views.add_medical,name='add_medical'),
