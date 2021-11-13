@@ -9,7 +9,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
 from django.http import HttpResponse,HttpResponseRedirect
-from administration.models import user_details,package_details,hospital_details,cab_details,hotel_details,medical_details,petrol_details,place_details,railway_details,bus_details,hotel_booking,cab_booking,rating,cab_rating,app_rating,package_booking,package_review,blog,coupon
+from administration.models import user_details,package_details,hospital_details,cab_details,hotel_details,hot_spots,petrol_details,place_details,railway_details,bus_details,hotel_booking,cab_booking,rating,cab_rating,app_rating,package_booking,package_review,blog,coupon
 from administration.forms import UserForm,UserForm2
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
@@ -225,22 +225,24 @@ def add_hotels(request):
 		if form.is_valid():
 			form.save()
 			usr=User.objects.latest('id')
-			User.objects.get(id=usr.id).update(last_name="store")
+			usrupdate=User.objects.get(id=usr.id)
+			usrupdate.last_name="store"
+			usrupdate.save()
 			return HttpResponseRedirect('/admin_management')
 		else:
 			form=UserForm()
 		
 	return render(request,'administration/add_hotels.html',{'form':form})
 @login_required(login_url='/')
-def add_medical(request):
+def add_hotspots(request):
 	if request.method == 'POST':
 		
-		cre_medical=medical_details(
+		cre_hot_spots=hot_spots(
 			name=request.POST['medicalname'],
 			location=request.POST['medicallocation'],
 			pincode=request.POST['medicalpincode'],
 			)
-		cre_medical.save()
+		cre_hot_spots.save()
 	return render(request,'administration/add_medical.html')
 @login_required(login_url='/')
 def add_petrol(request):
@@ -325,7 +327,7 @@ def view_hotels(request):
 	return render(request,'administration/admin_view_hotel.html',{'details':details})
 @login_required(login_url='/')
 def view_medical(request):
-	details=medical_details.objects.all().order_by('-id')
+	details=hot_spots.objects.all().order_by('-id')
 
 	return render(request,'administration/admin_view_medical.html',{'details':details})
 @login_required(login_url='/')
@@ -403,7 +405,7 @@ def event_planner_user(request,id):
 	cab_detai=cab_details.objects.all()
 	hotel_detai=hotel_details.objects.all()
 	hospital_detai=hospital_details.objects.all()
-	medical_detai=medical_details.objects.all()
+	medical_detai=hot_spots.objects.all()
 	railway_detai=railway_details.objects.all()
 	bus_detai=bus_details.objects.all()
 	petrol_detai=petrol_details.objects.all()
@@ -561,38 +563,38 @@ def user_search_package(request):
 def details_hotels(request,id):
 	details=hotel_details.objects.get(pk=id)
 	ratings=rating.objects.filter(hotel_ref=id)
-	return render(request,'administration/individual_details_with_booking.html',{'details':details,'id':id,'ratings':ratings})
+	return render(request,'user/individual_details_with_booking.html',{'details':details,'id':id,'ratings':ratings})
 @login_required(login_url='/')
 def details_cab(request,id):
 	details=cab_details.objects.get(pk=id)
 	ratings=cab_rating.objects.filter(cab_ref=id)
-	return render(request,'administration/individual_details_booking_cab.html',{'details':details,'id':id,'ratings':ratings})
+	return render(request,'user/individual_details_booking_cab.html',{'details':details,'id':id,'ratings':ratings})
 @login_required(login_url='/')
 def details_hospital(request,id):
 	details=hospital_details.objects.get(pk=id)
 
-	return render(request,'administration/individual_details.html',{'details':details,'id':id})
+	return render(request,'user/individual_details.html',{'details':details,'id':id})
 @login_required(login_url='/')
 def details_medical(request,id):
-	details=medical_details.objects.get(pk=id)
+	details=hot_spots.objects.get(pk=id)
 
-	return render(request,'administration/individual_details.html',{'details':details,'id':id})
+	return render(request,'user/individual_details.html',{'details':details,'id':id})
 @login_required(login_url='/')
 def details_petrol(request,id):
 	details=petrol_details.objects.get(pk=id)
 
-	return render(request,'administration/individual_details.html',{'details':details,'id':id})
+	return render(request,'user/individual_details.html',{'details':details,'id':id})
 
 @login_required(login_url='/')
 def details_railway(request,id):
 	details=railway_details.objects.get(pk=id)
 
-	return render(request,'administration/individual_details.html',{'details':details,'id':id})
+	return render(request,'user/individual_details.html',{'details':details,'id':id})
 @login_required(login_url='/')
 def details_bus(request,id):
 	details=bus_details.objects.get(pk=id)
 
-	return render(request,'administration/individual_details.html',{'details':details,'id':id})
+	return render(request,'user/individual_details.html',{'details':details,'id':id})
 
 @login_required(login_url='/')
 def book_hotel(request,id):
@@ -787,11 +789,11 @@ def delete_petrol(request,id):
 
 @login_required(login_url='/')
 def edit_medical(request,id):
-	details=medical_details.objects.get(pk=id)
+	details=hot_spots.objects.get(pk=id)
 	return render(request,'administration/edit_medical.html',{'details':details})
 @login_required(login_url='/')
 def update_medical(request,id):
-	mdl_update=medical_details.objects.get(pk=id)
+	mdl_update=hot_spots.objects.get(pk=id)
 	mdl_update.name=request.POST['medicalname']
 	mdl_update.location=request.POST['medicallocation']
 
@@ -802,7 +804,7 @@ def update_medical(request,id):
 
 @login_required(login_url='/')
 def delete_medical(request,id):
-	med_delete=medical_details.objects.get(pk=id)
+	med_delete=hot_spots.objects.get(pk=id)
 	med_delete.delete()
 
 	return HttpResponseRedirect('/view_medical')

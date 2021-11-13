@@ -58,7 +58,7 @@ class cab_details(models.Model):
 	pincode=models.CharField(max_length=30)
 
 
-class medical_details(models.Model):
+class hot_spots(models.Model):
 	name=models.CharField(max_length=30)
 	location=models.TextField()
 	pincode=models.CharField(max_length=30)

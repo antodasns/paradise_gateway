@@ -1,0 +1,646 @@
+<!DOCTYPE HTML>
+
+<html lang="en-US">
+
+    {% load static %} 
+
+    
+<!-- Mirrored from eazzy.me/html/traveline/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Nov 2019 10:50:19 GMT -->
+<head>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<style>
+.dropbtn {
+  background-color:#000000;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Dream Holidays</title>
+
+
+
+        <link rel="stylesheet" href="{% static 'inc/bootstrap/css/bootstrap.min.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'styles/themes/default/stylesheet.css' %}" />
+
+     
+
+        <link rel="alternate stylesheet" type="text/css"  title="02" href="{% static 'styles/themes/style02/stylesheet02.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="03" href="{% static 'styles/themes/style03/stylesheet03.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="04" href="{% static 'styles/themes/style04/stylesheet04.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="05" href="{% static 'styles/themes/style05/stylesheet05.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="06" href="{% static 'styles/themes/style06/stylesheet06.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="07" href="{% static 'styles/themes/style07/stylesheet07.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="08" href="{% static 'styles/themes/style08/stylesheet08.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="09" href="{% static 'styles/themes/style09/stylesheet09.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="10" href="{% static 'styles/themes/style10/stylesheet10.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="11" href="{% static 'styles/themes/style11/stylesheet11.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="12" href="{% static 'styles/themes/style12/stylesheet12.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="13" href="{% static 'styles/themes/style13/stylesheet13.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="14" href="{% static 'styles/themes/style14/stylesheet14.css' %}" />
+
+        <link rel="alternate stylesheet" type="text/css"  title="15" href="{% static 'styles/themes/style15/stylesheet15.css' %}" />
+        <style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+<link rel="stylesheet" href="{% static 'inc/select2/dist/css/select2.min.css' %}">
+
+        <script src="{% static 'inc/js/styleswitch.js' %}" type="text/javascript">
+
+
+/***********************************************
+
+* Style Sheet Switcher v1.1- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+
+* This notice MUST stay intact for legal use
+
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+
+***********************************************/
+
+</script>
+
+
+
+
+
+        <!-- Flexslider -->
+
+        <link rel="stylesheet" href="{% static 'styles/flexslider.css' %}" />
+
+
+
+        <!-- fontawesome -->
+
+        <link rel="stylesheet" href="{% static 'styles/fontawesome/font-awesome.min.css' %}" />
+
+
+
+        <!-- Datepicker UI -->
+
+        <link rel="stylesheet" href="{% static 'styles/jquery-ui-1.10.3.custom.min.css' %}" />
+
+
+
+        <!-- MI slider -->
+
+        <link rel="stylesheet" href="{% static 'styles/mi-slider.css' %}" />	
+
+
+
+        <!-- Chozen UI -->
+
+        <link rel="stylesheet" href="{% static 'styles/chosen.css' %}" />	
+
+
+
+        <!-- Range Slider UI #2 -->
+
+        <link rel="stylesheet" href="{% static 'styles/rangeslider-classic.css' %}" />
+
+
+
+        <!-- Elegant Font -->
+
+        <link rel="stylesheet" href="{% static 'inc/elegant-font/style.css' %}" />
+
+        <!--[if lte IE 7]><script src="{% static 'inc/elegant-font/lte-ie7.js' %}"></script><![endif]-->
+
+
+
+     <link rel="stylesheet" href="{% static 'demo/switcher.css' %}" />
+
+    </head>
+
+    <body>
+
+
+       
+
+        <div id="site">
+
+
+
+
+
+           
+
+
+
+
+{%block content%}
+
+{%endblock%}
+<footer id="footer" class="widefat">
+
+
+
+
+
+
+
+                <div class="container">
+
+
+
+
+
+                    <div class="footer-inner">
+
+
+
+                        <p class="credit">DreamHolidays Explore the world..</a></p>
+
+
+
+                    </div><!-- /.footer-inner -->
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </footer><!-- /#footer -->
+
+
+
+
+
+
+
+
+
+        </div><!-- /#site -->
+
+
+
+
+
+
+
+        <!-- Scripts -->
+
+
+
+        <!-- jQuery -->
+
+
+
+
+
+        <script src="{% static 'inc/js/jquery-1.10.2.min.js' %}"></script>
+
+        <script src="{% static 'inc/js/jquery-migrate-1.2.1.js' %}"></script>
+
+
+
+        <!-- modernizer -->
+
+   
+
+
+
+        <script src="{% static 'inc/js/modernizr.custom.63321.js' %}"></script>
+
+
+
+        <!-- FlexSlider -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.flexslider-min.js' %}"></script>   
+
+
+
+
+
+        <!-- CatSlider -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.catslider.js' %}"></script>    
+
+
+
+
+
+        <!-- Datepicker -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.ui.datepicker.min.js' %}"></script>    
+
+
+
+
+
+        <!-- Masonry -->
+
+        <script type="text/javascript" src="{% static 'inc/js/masonry.min.js' %}"></script> 
+
+
+
+
+
+
+
+        <!-- Increase/decrease quantity -->
+
+        <script type="text/javascript" src="{% static 'inc/js/increase-decrease-qty.js' %}"></script>   
+
+
+
+        <!-- Mixitup (filterable item) -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.mixitup.min.js' %}"></script>  
+
+
+
+
+
+        <!-- Google Map JS -->
+
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script> -->
+
+        <script type="text/javascript" src="{% static 'inc/js/google-map-infobox.js' %}"></script>      
+
+
+
+
+
+        <!-- Responsive Google Map (Fitmaps) JS -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.fitmaps.js' %}"></script>  
+
+
+
+        <!-- Chozen UI JS -->
+
+        <script type="text/javascript" src="{% static 'inc/js/chosen.jquery.js' %}"></script>   
+
+
+
+
+
+        <!-- Checkbox/Radio UI JS -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.screwdefaultbuttonsV2.js' %}"></script>    
+
+
+
+
+
+        <!-- Range Slider UI JS #2 -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.mousewheel.min.js' %}"></script>   
+
+        <script type="text/javascript" src="{% static 'inc/js/jQRangeSlider-min.js' %}"></script>   
+
+        <!-- bootstrap JS -->
+
+        <script type="text/javascript" src="{% static 'inc/bootstrap/js/bootstrap.min.js' %}"></script>     
+
+        <!-- raty JS -->
+
+        <script type="text/javascript" src="{% static 'inc/js/jquery.raty.min.js' %}"></script> 
+
+        <!-- Custom JS -->
+
+        <script type="text/javascript" src="{% static 'inc/js/custom.js' %}"></script>  
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction1() {
+  document.getElementById("myDropdown1").classList.toggle("show");
+}
+
+function filterFunction1() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput1");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown1");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+
+
+function myFunction2() {
+  document.getElementById("myDropdown2").classList.toggle("show");
+}
+
+function filterFunction2() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown2");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction3() {
+  document.getElementById("myDropdown3").classList.toggle("show");
+}
+
+function filterFunction3() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput3");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown3");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction4() {
+  document.getElementById("myDropdown4").classList.toggle("show");
+}
+
+function filterFunction4() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput4");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown4");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction5() {
+  document.getElementById("myDropdown5").classList.toggle("show");
+}
+
+function filterFunction5() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput5");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown5");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction6() {
+  document.getElementById("myDropdown6").classList.toggle("show");
+}
+
+function filterFunction6() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput6");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown6");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction7() {
+  document.getElementById("myDropdown7").classList.toggle("show");
+}
+
+function filterFunction7() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput7");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown7");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction8() {
+  document.getElementById("myDropdown8").classList.toggle("show");
+}
+
+function filterFunction8() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput8");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown8");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction9() {
+  document.getElementById("myDropdown9").classList.toggle("show");
+}
+
+function filterFunction9() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput9");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown9");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+function myFunction10() {
+  document.getElementById("myDropdown10").classList.toggle("show");
+}
+
+function filterFunction10() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput10");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown10");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+
+    </body>
+
+
+<!-- Mirrored from eazzy.me/html/traveline/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Nov 2019 10:50:19 GMT -->
+</html>
